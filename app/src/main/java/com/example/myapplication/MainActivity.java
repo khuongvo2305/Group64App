@@ -79,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
             // 3 giá trị còn lại
             // gọi hàm trả message về cho cashier số tiền cần thanh toán
             // Sau khi cashier chuyển status thành true - đã thanh toán trên firebase,
-            // Hàm on value change sẽ cập nhật lịch sử giao dịch và điểm cho user (đồng thời cập nhật hạng, tặng voucher nếu đủ)
+            // Hàm on  change sẽ cập nhật lịch sử giao dịch và điểm cho user (đồng thời cập nhật hạng, tặng voucher nếu đủ)
+            // https://firebase.google.com/docs/database/android/read-and-write?authuser=0
+            //
         }
         class User {
 
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         //New user
         mData.child("User").setValue(usr);
         //
-        
+
     }
 
 
