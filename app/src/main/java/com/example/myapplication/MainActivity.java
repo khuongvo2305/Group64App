@@ -38,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
             VALUE, PERCENTAGE, FREE;
         }
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-        String dateString = format.format( new Date()   );
-        Date date       = format.parse ( "2009-12-31" );
         public class Voucher
         {
             public String ID;
@@ -123,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             private void writeNewUser(String json) {
                 User usr = new User(json);
 
-                mDatabase.child("users").child(userId).setValue(user);
+                mDatabase.child("users").setValue(usr);
             }
 
 
