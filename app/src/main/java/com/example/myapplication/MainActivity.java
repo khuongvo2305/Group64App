@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance().getReference();
         //New user
         mData.child("User").setValue(usr);
+
         //
 
     }
