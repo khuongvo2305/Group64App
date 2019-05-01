@@ -14,31 +14,23 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+enum Rank {
+    DIAMOND, GOLD, NEW;
+}
+enum VoucherType {
+    PERCENTAGE, VALUE;
+}
 
 public class MainActivity extends AppCompatActivity {
 
+    private String json;
+    DatabaseReference mData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//        myRef.setValue("Hello World");
-        // Read from the database
-        private DatabaseReference mDatabase;
-// ...
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        @IgnoreExtraProperties
-        enum Rank
-        {
-            NEW, GOLD, DIAMOND;
-        }
-        enum VoucherType
-        {
-            VALUE, PERCENTAGE, FREE;
-        }
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        public class Voucher
+        class Voucher
         {
             public String ID;
             public VoucherType type;
@@ -55,32 +47,43 @@ public class MainActivity extends AppCompatActivity {
                 this.date = date;
                 if (type == VoucherType.VALUE) this.value = value;
                 else if (type == VoucherType.PERCENTAGE) this.percentage = value;
-                else if (type == VoucherType.FREE) this.free = value;
-                available = 1;
+                available = true;
                 this.detail = detail;
             }
         }
 
-        public class Bill
+        class Bill
         {
             public String ID;
             public Date date;
-            public int BillAmount;
+            public int billAmount;
             public Voucher voucher;
             public int BillDiscount;
             public int BillTotal;
             public boolean state;
             public int point;
 
-            public Bill(String ID, Date date, int billAmount, Voucher voucher) {
+            public Bill(String ID, Date date, int billAmount) {
                 this.ID = ID;
                 this.date = date;
-                BillAmount = billAmount;
+                this.billAmount = billAmount;
                 this.voucher = voucher;
-                //if...
+                this.state = false; //chưa thanh toán
+                // TO
             }
+
+            // Hiện thực hàm khởi tạo Bill() nhận tham số là chuỗi json được quét từ QR,
+            // nhận 3 thông số ID, date, billamount
+            // Sau đó gọi hàm hiển thị màn hình chọn voucher
+            // Sau khi chọn voucher, phân loại voucher, giảm theo % hay trừ thẳng, từ đó tính
+            // 3 giá trị còn lại
+            // gọi hàm trả message về cho cashier số tiền cần thanh toán
+            // Sau khi cashier chuyển status thành true - đã thanh toán trên firebase,
+            // Hàm on  change sẽ cập nhật lịch sử giao dịch và điểm cho user (đồng thời cập nhật hạng, tặng voucher nếu đủ)
+            // https://firebase.google.com/docs/database/android/read-and-write?authuser=0
+            //
         }
-        public class User {
+        class User {
 
             public String ID;
             public String name;
@@ -97,15 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 // Default constructor required for calls to DataSnapshot.getValue(User.class)
             }
 
-            public User(String ID, String name, String phone, String address, int point, Voucher[] voucherDatabase, Bill[] history) {
-                this.ID = ID;
-                this.name = name;
-                this.phone = phone;
-                this.address = address;
-                this.point = point;
-                VoucherDatabase = voucherDatabase;
-                History = history;
-            }
+
 
             public User(String ID, String name, String phone, String address) {
                 this.ID = ID;
@@ -117,14 +112,15 @@ public class MainActivity extends AppCompatActivity {
                 this.point = 0;
             }
 
-            private void writeNewUser(String json) {
-                User usr = new User(json);
-
-                mDatabase.child("users").setValue(usr);
-            }
 
 
         }
+        User usr = new User("123","456","543","123");
+        mData = FirebaseDatabase.getInstance().getReference();
+        //New user
+        mData.child("User").setValue(usr);
+        //
+
     }
 
 
