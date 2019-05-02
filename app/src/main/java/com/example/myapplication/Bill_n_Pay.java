@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.Date;
 
 public class Bill_n_Pay extends AppCompatActivity {
     private Button useVoucherBtn;
@@ -15,6 +16,7 @@ public class Bill_n_Pay extends AppCompatActivity {
         setContentView(R.layout.bill_pickvoucher);
         String ID = getIntent().getStringExtra("ID");
         int billAmount = getIntent().getIntExtra("billAmount",0);
+        Date date = getIntent().getE;
         TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
         txtMabill.setText(ID);
         TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
