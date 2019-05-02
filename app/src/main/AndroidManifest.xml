@@ -11,8 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VoucherActivity"></activity>
-        <activity android:name=".Bill_n_Pay"></activity>
+        <activity android:name=".MyVoucher"></activity>
+        <activity android:name=".Bill_n_pay" />
+        <activity android:name=".VoucherActivity" />
+        <activity android:name=".Bill_n_pick" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
