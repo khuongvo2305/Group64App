@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +25,6 @@ enum VoucherType {
 }
 
 public class MainActivity extends AppCompatActivity {
-
     private String json;
     DatabaseReference mData;
     @Override
@@ -68,8 +70,15 @@ public class MainActivity extends AppCompatActivity {
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
+                Intent bill_Intent = new Intent(MainActivity.this, Bill_n_Pay.class);
+                bill_Intent.putExtra("ID", ID);
+                bill_Intent.putExtra("billAmount", billAmount);
+                bill_Intent.putExtra("date",date);
+                startActivity(bill_Intent);
+
                 // TO DO
             }
+
 
             // Hiện thực hàm khởi tạo Bill() nhận tham số là chuỗi json được quét từ QR,
             // nhận 3 thông số ID, date, billamount

@@ -9,7 +9,8 @@
     <drawable name="uudaithanhvien">@drawable/thanhvienvang</drawable>
     <drawable name="tichdiem">@drawable/tichdiem2</drawable>
     <drawable name="maqrcode">@drawable/qrcode</drawable>
-    <string name="facebook_app_id">346580389301968</string> <string name="fb_login_protocol_scheme">fb346580389301968</string>
+    <string name="facebook_app_id">346580389301968</string>
+    <string name="fb_login_protocol_scheme">fb346580389301968</string>
 
     <string name="ngayinbill">23/05/1999</string>
     <string name="mabill">Mt1702</string>
