@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
             public String detail;
             public int value;
             public int percentage;
-            public int free;
             public boolean available;
             public Date date;
             public Voucher(){};
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
-                // TO
+                // TO DO
             }
 
             // Hiện thực hàm khởi tạo Bill() nhận tham số là chuỗi json được quét từ QR,
