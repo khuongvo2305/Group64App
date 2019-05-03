@@ -1,16 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.IgnoreExtraProperties;
-import com.google.firebase.database.Transaction;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,7 +17,6 @@ enum VoucherType {
 }
 
 public class MainActivity extends AppCompatActivity {
-
     private String json;
     DatabaseReference mData;
     @Override
@@ -48,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
                 else if (type == VoucherType.PERCENTAGE) this.percentage = value;
                 available = true;
                 this.detail = detail;
+                Intent MyVoucher_Intent = new Intent(MainActivity.this, MyVoucher.class);
+                MyVoucher_Intent.putExtra("ID", ID);
+                MyVoucher_Intent.putExtra("value", value);
+                MyVoucher_Intent.putExtra("percentage",percentage);
+                MyVoucher_Intent.putExtra("date",date);
+                MyVoucher_Intent.putExtra("detail",detail);
             }
         }
 
@@ -68,8 +68,19 @@ public class MainActivity extends AppCompatActivity {
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
+                Intent billpick_Intent = new Intent(MainActivity.this, Bill_n_pick.class);
+                billpick_Intent.putExtra("ID", ID);
+                billpick_Intent.putExtra("billAmount", billAmount);
+                billpick_Intent.putExtra("date",date);
+                startActivity(billpick_Intent);
+                Intent billpay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
+                billpay_Intent.putExtra("ID", ID);
+                billpay_Intent.putExtra("billAmount", billAmount);
+                billpay_Intent.putExtra("date",date);
+
                 // TO DO
             }
+
 
             // Hiện thực hàm khởi tạo Bill() nhận tham số là chuỗi json được quét từ QR,
             // nhận 3 thông số ID, date, billamount
