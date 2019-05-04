@@ -124,10 +124,23 @@ public class MainActivity extends AppCompatActivity {
                 this.ID = ID;
                 this.type = type;
                 this.date = date;
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String dateString = formatter.format(date);
                 if (type == VoucherType.VALUE) this.value = value;
                 else if (type == VoucherType.PERCENTAGE) this.percentage = value;
                 available = true;
                 this.detail = detail;
+                Intent pay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
+                pay_Intent.putExtra("ID", ID);
+                pay_Intent.putExtra("value", value);
+                pay_Intent.putExtra("date",dateString);
+                pay_Intent.putExtra("percentage", percentage);
+                Intent voucher_Intent = new Intent(MainActivity.this, ListVoucher.class);
+                voucher_Intent.putExtra("ID", ID);
+                voucher_Intent.putExtra("value", value);
+                voucher_Intent.putExtra("date",dateString);
+                voucher_Intent.putExtra("percentage", percentage);
+                voucher_Intent.putExtra("detail",detail);
             }
         }
 
@@ -148,11 +161,17 @@ public class MainActivity extends AppCompatActivity {
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String dateString = formatter.format(date);
                 Intent bill_Intent = new Intent(MainActivity.this, Bill_n_voucher.class);
                 bill_Intent.putExtra("ID", ID);
                 bill_Intent.putExtra("billAmount", billAmount);
-                bill_Intent.putExtra("date",date);
+                bill_Intent.putExtra("date",dateString);
                 startActivity(bill_Intent);
+                Intent bill_pay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
+                bill_pay_Intent.putExtra("ID", ID);
+                bill_pay_Intent.putExtra("billAmount", billAmount);
+                bill_pay_Intent.putExtra("date",dateString);
 
                 // TO DO
             }
