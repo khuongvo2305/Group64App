@@ -43,7 +43,7 @@ public class ScanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.scan);
         Button btnquet = (Button) findViewById(R.id.btnquet);
         scanResults = (TextView) findViewById(R.id.scan_results);
         scanResults_ID = (TextView) findViewById(R.id.txtMabill);
@@ -57,6 +57,7 @@ public class ScanActivity extends AppCompatActivity {
             scanResults_ID.setText(output[0]);
             scanResults_Date.setText(output[1]);
             scanResults_BillAmount.setText(output[2]);
+            setContentView(R.layout.bill_pickvoucher);
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
