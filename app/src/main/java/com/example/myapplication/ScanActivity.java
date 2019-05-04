@@ -31,6 +31,9 @@ public class ScanActivity extends AppCompatActivity {
     private static final String LOG_TAG = "Barcode Scanner API";
     private static final int PHOTO_REQUEST = 10;
     private TextView scanResults;
+    private TextView scanResults_ID;
+    private TextView scanResults_Date;
+    private TextView scanResults_BillAmount;
     private BarcodeDetector detector;
     private Uri imageUri;
     private static final int REQUEST_WRITE_PERMISSION = 20;
@@ -43,9 +46,17 @@ public class ScanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button btnquet = (Button) findViewById(R.id.btnquet);
         scanResults = (TextView) findViewById(R.id.scan_results);
+        scanResults_ID = (TextView) findViewById(R.id.txtMabill);
+        scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);
+        scanResults_BillAmount = (TextView) findViewById(R.id.txtTongbill);
+
         if (savedInstanceState != null) {
             imageUri = Uri.parse(savedInstanceState.getString(SAVED_INSTANCE_URI));
+            String[] output = (savedInstanceState.getString(SAVED_INSTANCE_RESULT)).split("-");
             scanResults.setText(savedInstanceState.getString(SAVED_INSTANCE_RESULT));
+            scanResults_ID.setText(output[0]);
+            scanResults_Date.setText(output[1]);
+            scanResults_BillAmount.setText(output[2]);
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +99,12 @@ public class ScanActivity extends AppCompatActivity {
                     SparseArray<Barcode> barcodes = detector.detect(frame);
                     for (int index = 0; index < barcodes.size(); index++) {
                         Barcode code = barcodes.valueAt(index);
+                        String[] output = ((String)(scanResults.getText())).split("-");
                         scanResults.setText(scanResults.getText() + code.displayValue + "\n");
+                        scanResults_ID.setText(output[0] + code.displayValue + "\n");
+                        scanResults_Date.setText(output[1] + code.displayValue + "\n");
+                        scanResults_BillAmount.setText(output[2] + code.displayValue + "\n");
+
 
                         //Required only if you need to extract the type of barcode
                         int type = barcodes.valueAt(index).valueFormat;
