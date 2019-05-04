@@ -57,6 +57,7 @@ public class ScanActivity extends AppCompatActivity {
             scanResults_ID.setText(output[0]);
             scanResults_Date.setText(output[1]);
             scanResults_BillAmount.setText(output[2]);
+            setContentView(R.layout.bill_pickvoucher);
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
