@@ -11,10 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyVoucher"></activity>
-        <activity android:name=".Bill_n_pay" />
+        <activity android:name=".LienHe"></activity>
+        <activity android:name=".ListVoucher" />
+        <activity android:name=".CaiDat" />
+        <activity android:name=".GuiPhanHoi" />
+        <activity android:name=".DieuKhoanSudung" />
+        <activity android:name=".LichSuGiaoDich" />
+        <activity android:name=".Thongtin_account" />
+        <activity android:name=".Map_Activity" />
+        <activity android:name=".DatHang_Activity" />
+        <activity android:name=".TichDiem_Activity" />
+        <activity android:name=".account_Activity" />
+        <activity android:name=".account" />
         <activity android:name=".VoucherActivity" />
-        <activity android:name=".Bill_n_pick" />
+        <activity android:name=".Bill_n_Pay" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

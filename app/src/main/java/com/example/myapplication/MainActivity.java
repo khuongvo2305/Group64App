@@ -1,11 +1,13 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,10 +21,94 @@ enum VoucherType {
 public class MainActivity extends AppCompatActivity {
     private String json;
     DatabaseReference mData;
+    ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
+    Button BtnName, BtnRank,BtnPoint;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
+        BtnLienhe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LienHe.class);
+                startActivity(intent);
+            }
+        });
+        BtnAvartar = (ImageButton) findViewById(R.id.imageButton11) ;
+        BtnAvartar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnIconStar = (ImageButton) findViewById(R.id.imageButton5) ;
+        BtnIconStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnName = (Button) findViewById(R.id.button6) ;
+        BtnName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnRank = (Button) findViewById(R.id.button7) ;
+        BtnRank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnPoint = (Button) findViewById(R.id.button8) ;
+        BtnPoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
+        BtnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, account_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnOrder = (ImageButton) findViewById(R.id.imageButton21) ;
+        BtnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DatHang_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnMap = (ImageButton) findViewById(R.id.imageButton20) ;
+        BtnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Map_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnStore = (ImageButton) findViewById(R.id.imageButton17) ;
+        BtnStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        /////////////////
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         class Voucher
         {
@@ -42,12 +128,6 @@ public class MainActivity extends AppCompatActivity {
                 else if (type == VoucherType.PERCENTAGE) this.percentage = value;
                 available = true;
                 this.detail = detail;
-                Intent MyVoucher_Intent = new Intent(MainActivity.this, MyVoucher.class);
-                MyVoucher_Intent.putExtra("ID", ID);
-                MyVoucher_Intent.putExtra("value", value);
-                MyVoucher_Intent.putExtra("percentage",percentage);
-                MyVoucher_Intent.putExtra("date",date);
-                MyVoucher_Intent.putExtra("detail",detail);
             }
         }
 
@@ -68,15 +148,11 @@ public class MainActivity extends AppCompatActivity {
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
-                Intent billpick_Intent = new Intent(MainActivity.this, Bill_n_pick.class);
-                billpick_Intent.putExtra("ID", ID);
-                billpick_Intent.putExtra("billAmount", billAmount);
-                billpick_Intent.putExtra("date",date);
-                startActivity(billpick_Intent);
-                Intent billpay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
-                billpay_Intent.putExtra("ID", ID);
-                billpay_Intent.putExtra("billAmount", billAmount);
-                billpay_Intent.putExtra("date",date);
+                Intent bill_Intent = new Intent(MainActivity.this, Bill_n_Pay.class);
+                bill_Intent.putExtra("ID", ID);
+                bill_Intent.putExtra("billAmount", billAmount);
+                bill_Intent.putExtra("date",date);
+                startActivity(bill_Intent);
 
                 // TO DO
             }
@@ -125,11 +201,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        User usr = new User("123","456","543","123");
+       /* User usr = new User("123","456","543","123");
         mData = FirebaseDatabase.getInstance().getReference();
         //New user
-        mData.child("User").setValue(usr);
-
+        mData.child("User").setValue(usr); */
         //
 
     }

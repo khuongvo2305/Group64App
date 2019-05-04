@@ -1,33 +1,33 @@
 package com.example.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-public class Bill_n_pay extends AppCompatActivity {
-
+public class Bill_n_Pay extends AppCompatActivity {
+    private Button useVoucherBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bill_n_pay);
+        setContentView(R.layout.bill_pickvoucher);
         String ID = getIntent().getStringExtra("ID");
         int billAmount = getIntent().getIntExtra("billAmount",0);
-        int value = getIntent().getIntExtra("value",0);
-        int percentage = getIntent().getIntExtra("percentage",0);
-        String ID_vc = getIntent().getStringExtra("ID_vc");
+
         TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
         txtMabill.setText(ID);
         TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
         txtTongbill.setText(billAmount);
-        TextView txtTongbill2 = (TextView) findViewById(R.id.txtTongbill2);
-        txtTongbill2.setText(ID_vc);
-        int giamgia,thanhtoan;
-        giamgia = percentage*billAmount + value;
-        thanhtoan = billAmount - giamgia;
-        TextView txtTongbill3 = (TextView) findViewById(R.id.txtTongbill3);
-        txtTongbill3.setText(giamgia);
-        TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
-        txtTongbill5.setText(thanhtoan);
-
+        useVoucherBtn = (Button) findViewById(R.id.useVoucherBtn);
+        useVoucherBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent voucher_intent = new Intent(Bill_n_Pay.this, VoucherActivity.class);
+                startActivity(voucher_intent);
+            }
+        });
     }
+
 }

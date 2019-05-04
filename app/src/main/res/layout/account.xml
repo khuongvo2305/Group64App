@@ -246,20 +246,18 @@
         app:srcCompat="@drawable/nen" />
 
     <ImageButton
-        android:id="@+id/imageButton17"
+        android:id="@+id/BtnTichdiem"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
         android:layout_marginBottom="20dp"
         android:background="@null"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageButton21"
+        app:layout_constraintStart_toEndOf="@+id/BtnDatHang"
         app:srcCompat="@drawable/tichdiem_home" />
 
     <ImageButton
-        android:id="@+id/imageButton18"
+        android:id="@+id/BtnHome"
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -272,15 +270,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/imageButton20"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton17"
+        app:layout_constraintStart_toEndOf="@+id/BtnTichdiem"
         app:srcCompat="@drawable/tintuc_home" />
 
     <ImageButton
-        android:id="@+id/imageButton19"
+        android:id="@+id/BtnTaiKhoan"
         android:layout_width="60dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:layout_marginBottom="20dp"
         android:background="@null"
         android:scaleType="centerInside"
@@ -289,9 +287,11 @@
         app:srcCompat="@drawable/taikhoan_home" />
 
     <ImageButton
-        android:id="@+id/imageButton20"
+        android:id="@+id/BtnCuaHang"
         android:layout_width="64dp"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="20dp"
@@ -299,14 +299,15 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/imageButton19"
+        app:layout_constraintStart_toEndOf="@+id/BtnHome"
         app:srcCompat="@drawable/cuahang_home" />
 
     <ImageButton
-        android:id="@+id/imageButton21"
+        android:id="@+id/BtnDatHang"
         android:layout_width="60dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginBottom="20dp"
         android:background="@null"
         android:scaleType="centerInside"

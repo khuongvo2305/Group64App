@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="one">8dp</dimen>
+    <dimen name="two">16dp</dimen>
+    <dimen name="three">24dp</dimen>
+    <dimen name="four">32dp</dimen>
+    <dimen name="activity_padding">16dp</dimen>
+    <dimen name="alpha">0.8</dimen>
+
+    <dimen name="item_in_cart_label">20sp</dimen>
+    <dimen name="item_title">24sp</dimen>
+    <dimen name="category_title">32sp</dimen>
+    <dimen name="welcome_message">20sp</dimen>
+
+    <!-- general dimensions for all custom menu items -->
+    <dimen name="menu_item_icon_size">24dp</dimen>
+    <dimen name="menu_item_size">48dp</dimen>
+</resources>
