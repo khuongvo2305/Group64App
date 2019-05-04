@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LienHe"></activity>
+        <activity android:name=".Bill_n_pay"></activity>
+        <activity android:name=".LienHe" />
         <activity android:name=".ListVoucher" />
         <activity android:name=".CaiDat" />
         <activity android:name=".GuiPhanHoi" />
@@ -24,7 +25,7 @@
         <activity android:name=".account_Activity" />
         <activity android:name=".account" />
         <activity android:name=".VoucherActivity" />
-        <activity android:name=".Bill_n_pay" />
+        <activity android:name=".Bill_n_voucher" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

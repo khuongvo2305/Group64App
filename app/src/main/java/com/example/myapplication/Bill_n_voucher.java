@@ -1,23 +1,40 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
-public class Bill_n_pay extends AppCompatActivity {
+public class Bill_n_voucher extends AppCompatActivity {
+    private Button useVoucherBtn;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bill_n_pay);
+        setContentView(R.layout.bill_pickvoucher);
+        String ID = getIntent().getStringExtra("ID");
+        int billAmount = getIntent().getIntExtra("billAmount",0);
 
+        TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
+        txtMabill.setText(ID);
+        TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
+        txtTongbill.setText(billAmount);
+        useVoucherBtn = (Button) findViewById(R.id.useVoucherBtn);
+        useVoucherBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent voucher_intent = new Intent(Bill_n_voucher.this, VoucherActivity.class);
+                startActivity(voucher_intent);
+            }
+        });
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Bill_n_pay.this, account_Activity.class);
+                Intent intent = new Intent(Bill_n_voucher.this, account_Activity.class);
                 startActivity(intent);
             }
         });
@@ -25,7 +42,7 @@ public class Bill_n_pay extends AppCompatActivity {
         BtnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Bill_n_pay.this, MainActivity.class);
+                Intent intent = new Intent(Bill_n_voucher.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -33,7 +50,7 @@ public class Bill_n_pay extends AppCompatActivity {
         BtnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Bill_n_pay.this, Map_Activity.class);
+                Intent intent = new Intent(Bill_n_voucher.this, Map_Activity.class);
                 startActivity(intent);
             }
         });
@@ -41,9 +58,10 @@ public class Bill_n_pay extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Bill_n_pay.this, TichDiem_Activity.class);
+                Intent intent = new Intent(Bill_n_voucher.this, TichDiem_Activity.class);
                 startActivity(intent);
             }
         });
     }
+
 }

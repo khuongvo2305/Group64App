@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
-                Intent bill_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
+                Intent bill_Intent = new Intent(MainActivity.this, Bill_n_voucher.class);
                 bill_Intent.putExtra("ID", ID);
                 bill_Intent.putExtra("billAmount", billAmount);
                 bill_Intent.putExtra("date",date);
