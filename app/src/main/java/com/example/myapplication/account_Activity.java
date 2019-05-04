@@ -96,7 +96,7 @@ public class account_Activity extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(account_Activity.this, TichDiem_Activity.class);
+                Intent intent = new Intent(account_Activity.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

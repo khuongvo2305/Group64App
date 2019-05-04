@@ -48,7 +48,7 @@ public class GuiPhanHoi extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GuiPhanHoi.this, TichDiem_Activity.class);
+                Intent intent = new Intent(GuiPhanHoi.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

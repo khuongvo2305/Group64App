@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

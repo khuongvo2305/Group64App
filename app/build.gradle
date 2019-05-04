@@ -32,7 +32,7 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
     fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    implementation 'com.google.android.gms:play-services-vision:11.4.0'
+    implementation 'com.google.android.gms:play-services-vision:+'
 
 }
 apply plugin: 'com.google.gms.google-services'

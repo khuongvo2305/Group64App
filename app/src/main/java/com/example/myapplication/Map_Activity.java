@@ -40,7 +40,7 @@ public class Map_Activity extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Map_Activity.this, TichDiem_Activity.class);
+                Intent intent = new Intent(Map_Activity.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

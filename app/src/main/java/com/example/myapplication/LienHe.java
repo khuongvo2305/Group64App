@@ -48,7 +48,7 @@ public class LienHe extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LienHe.this, TichDiem_Activity.class);
+                Intent intent = new Intent(LienHe.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

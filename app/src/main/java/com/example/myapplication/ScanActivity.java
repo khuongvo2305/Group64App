@@ -18,6 +18,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ public class ScanActivity extends AppCompatActivity {
     private static final int REQUEST_WRITE_PERMISSION = 20;
     private static final String SAVED_INSTANCE_URI = "uri";
     private static final String SAVED_INSTANCE_RESULT = "result";
-
+    ImageButton BtnAccount, BtnHome, BtnOrder, BtnMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +75,38 @@ public class ScanActivity extends AppCompatActivity {
             scanResults.setText("Could not set up the detector!");
             return;
         }
+        BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
+        BtnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, account_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnHome = (ImageButton) findViewById(R.id.imageButton18) ;
+        BtnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        BtnOrder = (ImageButton) findViewById(R.id.imageButton21) ;
+        BtnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, DatHang_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnMap = (ImageButton) findViewById(R.id.imageButton20) ;
+        BtnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, Map_Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

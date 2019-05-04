@@ -48,7 +48,7 @@ public class DieuKhoanSudung extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DieuKhoanSudung.this, TichDiem_Activity.class);
+                Intent intent = new Intent(DieuKhoanSudung.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

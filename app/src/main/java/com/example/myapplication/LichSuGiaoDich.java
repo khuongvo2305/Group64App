@@ -48,7 +48,7 @@ public class LichSuGiaoDich extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LichSuGiaoDich.this, TichDiem_Activity.class);
+                Intent intent = new Intent(LichSuGiaoDich.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

@@ -60,7 +60,7 @@ public class Bill_n_pay extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Bill_n_pay.this, TichDiem_Activity.class);
+                Intent intent = new Intent(Bill_n_pay.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

@@ -48,7 +48,7 @@ public class Thongtin_account extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Thongtin_account.this, TichDiem_Activity.class);
+                Intent intent = new Intent(Thongtin_account.this, ScanActivity.class);
                 startActivity(intent);
             }
         });

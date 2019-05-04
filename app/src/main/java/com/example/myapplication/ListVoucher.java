@@ -48,7 +48,7 @@ public class ListVoucher extends AppCompatActivity {
         BtnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListVoucher.this, TichDiem_Activity.class);
+                Intent intent = new Intent(ListVoucher.this, ScanActivity.class);
                 startActivity(intent);
             }
         });
