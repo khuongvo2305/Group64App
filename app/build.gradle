@@ -30,6 +30,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.1.0'
     implementation 'com.facebook.android:facebook-login:[4,5)'
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+     fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.google.android.gms:play-services-vision:11.4.0'
 
 }
 apply plugin: 'com.google.gms.google-services'
