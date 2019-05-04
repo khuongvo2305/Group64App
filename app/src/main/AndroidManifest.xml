@@ -24,7 +24,7 @@
         <activity android:name=".account_Activity" />
         <activity android:name=".account" />
         <activity android:name=".VoucherActivity" />
-        <activity android:name=".Bill_n_Pay" />
+        <activity android:name=".Bill_n_pay" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

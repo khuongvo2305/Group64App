@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Bill_n_Pay extends AppCompatActivity {
+public class Bill_n_pay extends AppCompatActivity {
     private Button useVoucherBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class Bill_n_Pay extends AppCompatActivity {
         useVoucherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent voucher_intent = new Intent(Bill_n_Pay.this, VoucherActivity.class);
+                Intent voucher_intent = new Intent(Bill_n_pay.this, VoucherActivity.class);
                 startActivity(voucher_intent);
             }
         });

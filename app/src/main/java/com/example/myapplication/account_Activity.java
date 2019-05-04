@@ -6,14 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class account_Activity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnLienhe,BtnAvartar,BtnIconStar;
     Button BtnThongtin, BtnLichSugiaodich, BtnDieuKhoan,BtnGuiPhanHoi,BtnCatdat, BtnDangXuat,BtnName,BtnRank,BtnPoint;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account);
+        mAuth = FirebaseAuth.getInstance();
         BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
         BtnLienhe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,9 +144,16 @@ public class account_Activity extends AppCompatActivity {
         BtnDangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(account_Activity.this, LoginActivity.class);
-                startActivity(intent);
+                mAuth.signOut();
+                LoginManager.getInstance().logOut();
+                updateUI();
             }
         });
+    }
+    private void updateUI(){
+        Toast.makeText( account_Activity.this,"You're logged out",Toast.LENGTH_LONG).show();
+        Intent accountIntent = new Intent(account_Activity.this, LoginActivity.class);
+        startActivity(accountIntent);
+        finish();
     }
 }
