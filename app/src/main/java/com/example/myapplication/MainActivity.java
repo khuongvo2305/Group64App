@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
     Button BtnName, BtnRank,BtnPoint;
     @Override
+    //abc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
