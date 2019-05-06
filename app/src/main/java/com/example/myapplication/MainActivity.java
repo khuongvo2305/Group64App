@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
             public int value;
             public int percentage;
             public boolean available;
-            public Date date;
+            public String date;
             public Voucher(){};
-            public Voucher(String ID, VoucherType type, String detail, int value, Date date) {
+            public Voucher(String ID, VoucherType type, String detail, int value, String date) {
                 this.ID = ID;
                 this.type = type;
                 this.date = date;
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         class Bill
         {
             public String ID;
-            public Date date;
+            public String date;
             public int billAmount;
             public Voucher voucher;
             public int BillDiscount;
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean state;
             public int point;
 
-            public Bill(String ID, Date date, int billAmount) {
+            public Bill(String ID, String date, int billAmount) {
                 this.ID = ID;
                 this.date = date;
                 this.billAmount = billAmount;
