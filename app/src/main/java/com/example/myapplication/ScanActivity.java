@@ -28,6 +28,8 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+
+import com.example.myapplication.MainActivity;
 public class ScanActivity extends AppCompatActivity {
     private static final String LOG_TAG = "Barcode Scanner API";
     private static final int PHOTO_REQUEST = 10;
@@ -41,7 +43,9 @@ public class ScanActivity extends AppCompatActivity {
     private static final String SAVED_INSTANCE_URI = "uri";
     private static final String SAVED_INSTANCE_RESULT = "result";
     ImageButton BtnAccount, BtnHome, BtnOrder, BtnMap;
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan);
@@ -58,7 +62,7 @@ public class ScanActivity extends AppCompatActivity {
             scanResults_ID.setText(output[0]);
             scanResults_Date.setText(output[1]);
             scanResults_BillAmount.setText(output[2]);
-            setContentView(R.layout.bill_pickvoucher);
+
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,11 +108,11 @@ public class ScanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, Map_Activity.class);
+                Intent intent = new Intent(ScanActivity.this, Bill_n_pay.class);
                 startActivity(intent);
             }
         });
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -138,8 +142,6 @@ public class ScanActivity extends AppCompatActivity {
                         scanResults_ID.setText(output[0] + code.displayValue + "\n");
                         scanResults_Date.setText(output[1] + code.displayValue + "\n");
                         scanResults_BillAmount.setText(output[2] + code.displayValue + "\n");
-
-
                         //Required only if you need to extract the type of barcode
                         int type = barcodes.valueAt(index).valueFormat;
                         switch (type) {
