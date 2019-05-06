@@ -107,7 +107,6 @@ public class ScanActivity extends AppCompatActivity {
         BtnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ScanActivity.this, Map_Activity.class);
                 Intent intent = new Intent(ScanActivity.this, Bill_n_pay.class);
                 startActivity(intent);
             }

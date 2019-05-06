@@ -27,54 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
-        BtnLienhe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LienHe.class);
-                startActivity(intent);
-            }
-        });
-        BtnAvartar = (ImageButton) findViewById(R.id.imageButton11) ;
-        BtnAvartar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnIconStar = (ImageButton) findViewById(R.id.imageButton5) ;
-        BtnIconStar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnName = (Button) findViewById(R.id.button6) ;
-        BtnName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnRank = (Button) findViewById(R.id.button7) ;
-        BtnRank.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnPoint = (Button) findViewById(R.id.button8) ;
-        BtnPoint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +59,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        BtnIconStar = (ImageButton) findViewById(R.id.imageButton5) ;
+        BtnIconStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnAvartar = (ImageButton) findViewById(R.id.imageButton11) ;
+        BtnAvartar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
+        BtnLienhe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LienHe.class);
+                startActivity(intent);
+            }
+        });
         /////////////////
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         class Voucher
