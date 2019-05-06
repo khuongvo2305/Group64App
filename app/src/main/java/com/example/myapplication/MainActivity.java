@@ -26,6 +26,8 @@ enum VoucherType {
 
 public class MainActivity extends AppCompatActivity {
     private String json;
+    public String statestring;
+    public Integer state;
     DatabaseReference mData;
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
     Button BtnName, BtnRank,BtnPoint;
@@ -209,12 +211,15 @@ public class MainActivity extends AppCompatActivity {
 
         //Xử lý sau khi cashier xác nhận bill
         mData = FirebaseDatabase.getInstance().getReference();
-        mData.child("unpaidbill/state").addValueEventListener(new ValueEventListener() {
+        mData.child("unpaidbill").child("state").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //TODO
-                
-                Toast.makeText(MainActivity.this, "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
+                state = Integer.parseInt(dataSnapshot.getValue().toString());
+                if (state == 1)
+                {
+                    //TODO
+                    Toast.makeText(MainActivity.this, "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
