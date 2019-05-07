@@ -18,16 +18,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 enum Rank {
-    DIAMOND, GOLD, NEW;
-}
-enum VoucherType {
-    PERCENTAGE, VALUE;
+    DIAMOND, GOLD, NEW, SILVER;
 }
 
 public class MainActivity extends AppCompatActivity {
     private String json;
-    public String statestring;
-    public Integer state;
+    private Integer state;
     DatabaseReference mData;
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
     Button BtnName, BtnRank,BtnPoint;
@@ -95,33 +91,19 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         class Voucher
         {
-            public String ID;
-            public VoucherType type;
             public String detail;
             public int value;
             public int percentage;
             public boolean available;
-            public String date;
             public Voucher(){};
-            public Voucher(String ID, VoucherType type, String detail, int value, String date) {
-                this.ID = ID;
-                this.type = type;
-                this.date = date;
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                String dateString = formatter.format(date);
-                if (type == VoucherType.VALUE) this.value = value;
-                else if (type == VoucherType.PERCENTAGE) this.percentage = value;
+            public Voucher(String detail, int value) {
                 available = true;
                 this.detail = detail;
                 Intent pay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
-                pay_Intent.putExtra("ID", ID);
                 pay_Intent.putExtra("value", value);
-                pay_Intent.putExtra("date",dateString);
                 pay_Intent.putExtra("percentage", percentage);
                 Intent voucher_Intent = new Intent(MainActivity.this, ListVoucher.class);
-                voucher_Intent.putExtra("ID", ID);
                 voucher_Intent.putExtra("value", value);
-                voucher_Intent.putExtra("date",dateString);
                 voucher_Intent.putExtra("percentage", percentage);
                 voucher_Intent.putExtra("detail",detail);
             }
@@ -182,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
             public Voucher[] VoucherDatabase;
             public int voucherAvailable;
             public Bill[] History;
-            public int visitTimes;
 
             public User() {
                 // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -196,7 +177,6 @@ public class MainActivity extends AppCompatActivity {
                 this.phone = phone;
                 this.address = address;
                 this.rank = Rank.NEW;
-                this.visitTimes = 0;
                 this.point = 0;
             }
 
