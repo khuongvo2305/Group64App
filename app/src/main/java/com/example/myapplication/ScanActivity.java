@@ -55,6 +55,7 @@ public class ScanActivity extends AppCompatActivity {
         scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);
         scanResults_BillAmount = (TextView) findViewById(R.id.txtTongbill);
 
+
         if (savedInstanceState != null) {
             imageUri = Uri.parse(savedInstanceState.getString(SAVED_INSTANCE_URI));
             String[] output = (savedInstanceState.getString(SAVED_INSTANCE_RESULT)).split("-");
@@ -62,7 +63,11 @@ public class ScanActivity extends AppCompatActivity {
             scanResults_ID.setText(output[0]);
             scanResults_Date.setText(output[1]);
             scanResults_BillAmount.setText(output[2]);
-
+            Intent bill_Intent = new Intent(ScanActivity.this, Bill_n_voucher.class);
+            bill_Intent.putExtra("ID", output[0]);
+            bill_Intent.putExtra("billAmount", output[2]);
+            bill_Intent.putExtra("date",output[1]);
+            startActivity(bill_Intent);
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
