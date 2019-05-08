@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String idUser = getIntent().getStringExtra("idUser");
+        String ID = getIntent().getStringExtra("idBill");
+        int billAmount = getIntent().getIntExtra("billAmount",0);
+        String dateString = getIntent().getStringExtra("dateBill");
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         class Bill
         {
             public String ID;
-            public String date;
+            public String dateString;
             public int billAmount;
             public Voucher voucher;
             public int BillDiscount;
@@ -122,24 +126,20 @@ public class MainActivity extends AppCompatActivity {
 
             public Bill(String ID, String date, int billAmount) {
                 this.ID = ID;
-                this.date = date;
+                this.dateString = date;
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                String dateString = formatter.format(date);
                 Intent bill_Intent = new Intent(MainActivity.this, Bill_n_voucher.class);
                 bill_Intent.putExtra("ID", ID);
                 bill_Intent.putExtra("billAmount", billAmount);
-                bill_Intent.putExtra("date",dateString);
-                startActivity(bill_Intent);
+                bill_Intent.putExtra("date",date);
                 Intent bill_pay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
                 bill_pay_Intent.putExtra("ID", ID);
                 bill_pay_Intent.putExtra("billAmount", billAmount);
-                bill_pay_Intent.putExtra("date",dateString);
-
-                // TO DO
+                bill_pay_Intent.putExtra("date",date);
             }
+
 
 
             // Hiện thực hàm khởi tạo Bill() nhận tham số là chuỗi json được quét từ QR,
@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
             // https://firebase.google.com/docs/database/android/read-and-write?authuser=0
             //
         }
+        new Bill(ID, dateString, billAmount);
         class User {
 
             public String ID;

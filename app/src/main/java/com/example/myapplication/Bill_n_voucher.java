@@ -18,13 +18,15 @@ public class Bill_n_voucher extends AppCompatActivity {
         String ID = getIntent().getStringExtra("ID");
         int billAmount = getIntent().getIntExtra("billAmount",0);
         String dateString = getIntent().getStringExtra("dateString");
+        String billAmountS =String.valueOf(billAmount);
 
         TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
         txtMabill.setText(ID);
         TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
-        txtTongbill.setText(billAmount);
+        txtTongbill.setText(billAmountS);
         TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
-        txtTongbill.setText(dateString);
+        txtNgayinbill.setText(dateString);
+
         useVoucherBtn = (Button) findViewById(R.id.useVoucherBtn);
         useVoucherBtn.setOnClickListener(new View.OnClickListener() {
             @Override

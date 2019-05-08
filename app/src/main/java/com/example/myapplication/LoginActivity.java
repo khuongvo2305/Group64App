@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUI(){
         Toast.makeText(LoginActivity.this,"You're logged in",Toast.LENGTH_LONG).show();
         Intent accountIntent = new Intent(LoginActivity.this, MainActivity.class);
+        accountIntent.putExtra("idUser",idUser);
         startActivity(accountIntent);
         finish();
     }
