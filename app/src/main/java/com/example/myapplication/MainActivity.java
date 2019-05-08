@@ -16,14 +16,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 enum Rank {
     DIAMOND, GOLD, NEW, SILVER;
 }
 
 public class MainActivity extends AppCompatActivity {
     private String json;
-    private Integer state;
+    //Biến sử lý unpaid-bill
+    private Integer upbstate;
+    private String upbcustomerid;
+    private Integer upbtotal;
+    private Integer upbamount;
+    private String upbid;
+    private String upbdate;
+    private Integer upbpoint;
+    private String upbvoucherid;
+    private Integer oldpoint;
+    private Integer newpoint;
+
     DatabaseReference mData;
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
     Button BtnName, BtnRank,BtnPoint;
@@ -191,14 +205,46 @@ public class MainActivity extends AppCompatActivity {
 
         //Xử lý sau khi cashier xác nhận bill
         mData = FirebaseDatabase.getInstance().getReference();
-        mData.child("unpaidbill").child("state").addValueEventListener(new ValueEventListener() {
+        mData.addValueEventListener(new ValueEventListener() {
+
+            private Class history;
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                state = Integer.parseInt(dataSnapshot.getValue().toString());
-                if (state == 1)
+                //Chack trạng thái thanh toán
+                upbstate = Integer.parseInt(dataSnapshot.child("unpaidbill").child("state").getValue().toString());
+                //Nếu đã thanh toán
+                if (upbstate == 1)
                 {
                     //TODO
+                    //Set các giá trị
+                    upbcustomerid = dataSnapshot.child("unpaidbill").child("customerid").getValue().toString();
+                    upbtotal = Integer.parseInt(dataSnapshot.child("unpaidbill").child("billtotal").getValue().toString());
+                    upbamount = Integer.parseInt(dataSnapshot.child("unpaidbill").child("billamount").getValue().toString());
+                    upbid =  dataSnapshot.child("unpaidbill").child("billid").getValue().toString();
+                    upbdate = dataSnapshot.child("unpaidbill").child("date").toString();
+                    upbpoint = Integer.parseInt(dataSnapshot.child("unpaidbill").child("point").getValue().toString());
+                    upbvoucherid = dataSnapshot.child("unpaidbill").child("voucherid").getValue().toString();
+
+                    //Thêm bill vào history
+                    bill newbill = new bill(upbamount, upbid,upbtotal,upbcustomerid,upbdate,upbpoint,upbstate,upbvoucherid);
+                    mData.child("customer").child(upbcustomerid).child("history").child(upbid).setValue(newbill);
                     Toast.makeText(MainActivity.this, "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
+
+                    //Sửa point
+                    oldpoint = Integer.parseInt(dataSnapshot.child("customer").child(upbcustomerid).child("point").getValue().toString());
+                    newpoint = upbpoint + oldpoint;
+                    mData.child("customer").child(upbcustomerid).child("point").setValue(newpoint);
+
+                    //reset unpaid bill
+                    mData.child("unpaidbill").child("billamount").setValue(0);
+                    mData.child("unpaidbill").child("billid").setValue("null");
+                    mData.child("unpaidbill").child("billtotal").setValue(0);
+                    //mData.child("unpaidbill").child("customerid").setValue("null");
+                    mData.child("unpaidbill").child("date").setValue("null");
+                    mData.child("unpaidbill").child("point").setValue(0);
+                    mData.child("unpaidbill").child("state").setValue(0);
+                    mData.child("unpaidbill").child("voucherid").setValue("null");
                 }
             }
 
