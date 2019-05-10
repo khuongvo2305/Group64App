@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private ImageButton mFacebookBtn;
     private static final String TAG = "FACELOG";
     private FirebaseAuth mAuth;
-    public String idUser;
+    public String idUser,fbName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

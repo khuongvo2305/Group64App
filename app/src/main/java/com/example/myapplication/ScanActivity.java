@@ -50,6 +50,7 @@ public class ScanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan);
         Button btnquet = (Button) findViewById(R.id.btnquet);
+        Button btnOK = (Button) findViewById(R.id.btnOK);
         scanResults = (TextView) findViewById(R.id.scan_results);
         scanResults_ID = (TextView) findViewById(R.id.txtMabill);
         scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);
@@ -63,12 +64,7 @@ public class ScanActivity extends AppCompatActivity {
             scanResults_ID.setText(output[0]);
             scanResults_Date.setText(output[1]);
             scanResults_BillAmount.setText(output[2]);
-            Intent billIntent = new Intent(ScanActivity.this, MainActivity.class);
-            billIntent.putExtra("ID", output[0]);
-            billIntent.putExtra("billAmount", output[2]);
-            billIntent.putExtra("date",output[1]);
-            Intent intent = new Intent(ScanActivity.this, Bill_n_voucher.class);
-            startActivity(intent);
+
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +144,12 @@ public class ScanActivity extends AppCompatActivity {
                         scanResults_ID.setText(output[0] + code.displayValue + "\n");
                         scanResults_Date.setText(output[1] + code.displayValue + "\n");
                         scanResults_BillAmount.setText(output[2] + code.displayValue + "\n");
+                        Intent billIntent = new Intent(ScanActivity.this, MainActivity.class);
+                        billIntent.putExtra("ID", output[0]);
+                        billIntent.putExtra("billAmount", output[2]);
+                        billIntent.putExtra("date",output[1]);
+                        Intent intent = new Intent(ScanActivity.this, Bill_n_voucher.class);
+                        startActivity(intent);
                         //Required only if you need to extract the type of barcode
                         int type = barcodes.valueAt(index).valueFormat;
                         switch (type) {
