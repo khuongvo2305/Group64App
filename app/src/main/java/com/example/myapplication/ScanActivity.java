@@ -63,11 +63,12 @@ public class ScanActivity extends AppCompatActivity {
             scanResults_ID.setText(output[0]);
             scanResults_Date.setText(output[1]);
             scanResults_BillAmount.setText(output[2]);
-            Intent bill_Intent = new Intent(ScanActivity.this, Bill_n_voucher.class);
-            bill_Intent.putExtra("ID", output[0]);
-            bill_Intent.putExtra("billAmount", output[2]);
-            bill_Intent.putExtra("date",output[1]);
-            startActivity(bill_Intent);
+            Intent billIntent = new Intent(ScanActivity.this, MainActivity.class);
+            billIntent.putExtra("ID", output[0]);
+            billIntent.putExtra("billAmount", output[2]);
+            billIntent.putExtra("date",output[1]);
+            Intent intent = new Intent(ScanActivity.this, Bill_n_voucher.class);
+            startActivity(intent);
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +117,7 @@ public class ScanActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -203,7 +205,6 @@ public class ScanActivity extends AppCompatActivity {
             }
         }
     }
-
     private void takePicture() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File photo = new File(Environment.getExternalStorageDirectory(), "picture.jpg");

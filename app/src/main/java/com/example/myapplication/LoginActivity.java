@@ -78,9 +78,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     private void updateUI(){
-        Toast.makeText(LoginActivity.this,"You're logged in",Toast.LENGTH_LONG).show();
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
         Intent accountIntent = new Intent(LoginActivity.this, MainActivity.class);
-        accountIntent.putExtra("idUser",idUser);
+        accountIntent.putExtra("idUser",currentFirebaseUser.getUid());
         startActivity(accountIntent);
         finish();
     }
