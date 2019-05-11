@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,10 +21,25 @@ public class Bill_n_voucher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
+<<<<<<< HEAD
         final String IDUser = "DY5mTB6wIVSHY9FSd8HuhUIQ0FJ3";
         final String billAmount="180000";
         final String date = "08/08/1999";
         final String IDBill = "MT199";
+=======
+        Intent intent = this.getIntent();
+        String ID = intent.getStringExtra("ID");
+        String billAmount = intent.getStringExtra("billAmount");
+        String dateString = intent.getStringExtra("dateString");
+        TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
+        txtMabill.setText(ID);
+        TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
+        txtTongbill.setText(billAmount);
+        TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
+        txtNgayinbill.setText(dateString);
+        TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
+        txtTongbill5.setText(billAmount);
+>>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
         useVoucherBtn = (Button) findViewById(R.id.useVoucherBtn);
         useVoucherBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -28,20 +28,25 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+
+import com.example.myapplication.MainActivity;
 public class ScanActivity extends AppCompatActivity {
     private static final String LOG_TAG = "Barcode Scanner API";
     private static final int PHOTO_REQUEST = 10;
     private TextView scanResults;
-    private TextView scanResults_ID;
-    private TextView scanResults_Date;
-    private TextView scanResults_BillAmount;
+    private TextView scanResults_ID ;
+    private TextView scanResults_Date ;
+    private TextView scanResults_BillAmount ;
+
     private BarcodeDetector detector;
     private Uri imageUri;
     private static final int REQUEST_WRITE_PERMISSION = 20;
     private static final String SAVED_INSTANCE_URI = "uri";
     private static final String SAVED_INSTANCE_RESULT = "result";
     ImageButton BtnAccount, BtnHome, BtnOrder, BtnMap;
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan);
@@ -51,6 +56,7 @@ public class ScanActivity extends AppCompatActivity {
         scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);
         scanResults_BillAmount = (TextView) findViewById(R.id.txtTongbill);
 
+
         if (savedInstanceState != null) {
             imageUri = Uri.parse(savedInstanceState.getString(SAVED_INSTANCE_URI));
             String[] output = (savedInstanceState.getString(SAVED_INSTANCE_RESULT)).split("-");
@@ -58,7 +64,7 @@ public class ScanActivity extends AppCompatActivity {
             scanResults_ID.setText(output[0]);
             scanResults_Date.setText(output[1]);
             scanResults_BillAmount.setText(output[2]);
-            setContentView(R.layout.bill_pickvoucher);
+
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +113,8 @@ public class ScanActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -135,11 +141,18 @@ public class ScanActivity extends AppCompatActivity {
                         Barcode code = barcodes.valueAt(index);
                         String[] output = ((String)(scanResults.getText())).split("-");
                         scanResults.setText(scanResults.getText() + code.displayValue + "\n");
-                        scanResults_ID.setText(output[0] + code.displayValue + "\n");
-                        scanResults_Date.setText(output[1] + code.displayValue + "\n");
-                        scanResults_BillAmount.setText(output[2] + code.displayValue + "\n");
-
-
+//                        scanResults_ID.setText(output[0] + code.displayValue + "\n");
+//                        scanResults_Date.setText(output[1] + code.displayValue + "\n");
+//                        scanResults_BillAmount.setText(output[2] + code.displayValue + "\n");
+                        Intent bill_Intent = new Intent(this, Bill_n_voucher.class);
+                        Intent bill_pay_Intent = new Intent(this, Bill_n_pay.class);
+                        bill_Intent.putExtra("ID", output[0]);
+                        bill_Intent.putExtra("billAmount", output[2]);
+                        bill_Intent.putExtra("dateString",output[1]);
+                        bill_pay_Intent.putExtra("ID", output[0]);
+                        bill_pay_Intent.putExtra("billAmount", output[2]);
+                        bill_pay_Intent.putExtra("dateString",output[1]);
+                        startActivity(bill_Intent);
                         //Required only if you need to extract the type of barcode
                         int type = barcodes.valueAt(index).valueFormat;
                         switch (type) {
@@ -197,7 +210,6 @@ public class ScanActivity extends AppCompatActivity {
             }
         }
     }
-
     private void takePicture() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File photo = new File(Environment.getExternalStorageDirectory(), "picture.jpg");

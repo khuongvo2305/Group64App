@@ -24,12 +24,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
-
+import com.example.myapplication.MainActivity;
 public class LoginActivity extends AppCompatActivity {
     private CallbackManager mCallbackManager;
     private ImageButton mFacebookBtn;
     private static final String TAG = "FACELOG";
     private FirebaseAuth mAuth;
+    public String idUser,fbName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onSuccess(LoginResult loginResult) {
                         Log.d(TAG, "facebook:onSuccess:" + loginResult);
                         handleFacebookAccessToken(loginResult.getAccessToken());
+                        idUser = loginResult.getAccessToken().getUserId();
                     }
 
                     @Override
@@ -65,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
+
     }
-    @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -76,8 +78,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     private void updateUI(){
-        Toast.makeText(LoginActivity.this,"You're logging in",Toast.LENGTH_LONG).show();
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
         Intent accountIntent = new Intent(LoginActivity.this, MainActivity.class);
+        accountIntent.putExtra("idUser",currentFirebaseUser.getUid());
         startActivity(accountIntent);
         finish();
     }

@@ -3,24 +3,42 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 enum Rank {
-    DIAMOND, GOLD, NEW;
-}
-enum VoucherType {
-    PERCENTAGE, VALUE;
+    DIAMOND, GOLD, NEW, SILVER;
 }
 
 public class MainActivity extends AppCompatActivity {
     private String json;
+    //Biến sử lý unpaid-bill
+    private Integer upbstate;
+    private String upbcustomerid;
+    private Integer upbtotal;
+    private Integer upbamount;
+    private String upbid;
+    private String upbdate;
+    private Integer upbpoint;
+    private String upbvoucherid;
+    private Integer oldpoint;
+    private Integer newpoint;
+
     DatabaseReference mData;
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
     Button BtnName, BtnRank,BtnPoint;
@@ -28,59 +46,19 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
-        BtnLienhe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Bill_n_voucher.class);
-                startActivity(intent);
-            }
-        });
-        BtnAvartar = (ImageButton) findViewById(R.id.imageButton11) ;
-        BtnAvartar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnIconStar = (ImageButton) findViewById(R.id.imageButton5) ;
-        BtnIconStar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnName = (Button) findViewById(R.id.button6) ;
-        BtnName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnRank = (Button) findViewById(R.id.button7) ;
-        BtnRank.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnPoint = (Button) findViewById(R.id.button8) ;
-        BtnPoint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                startActivity(intent);
-            }
-        });
+        String idUser = getIntent().getStringExtra("idUser");
+        String ID = getIntent().getStringExtra("idBill");
+        int billAmount = getIntent().getIntExtra("billAmount",0);
+        String dateString = getIntent().getStringExtra("dateBill");
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
+                Intent intent = new Intent(MainActivity.this, Bill_n_voucher.class);
+=======
                 Intent intent = new Intent(MainActivity.this, account_Activity.class);
+>>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
                 startActivity(intent);
             }
         });
@@ -108,38 +86,47 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        BtnIconStar = (ImageButton) findViewById(R.id.imageButton5) ;
+        BtnIconStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnAvartar = (ImageButton) findViewById(R.id.imageButton11) ;
+        BtnAvartar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
+                startActivity(intent);
+            }
+        });
+        BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
+        BtnLienhe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LienHe.class);
+                startActivity(intent);
+            }
+        });
         /////////////////
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         class Voucher
         {
-            public String ID;
-            public VoucherType type;
             public String detail;
             public int value;
             public int percentage;
             public boolean available;
-            public Date date;
             public Voucher(){};
-            public Voucher(String ID, VoucherType type, String detail, int value, Date date) {
-                this.ID = ID;
-                this.type = type;
-                this.date = date;
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                String dateString = formatter.format(date);
-                if (type == VoucherType.VALUE) this.value = value;
-                else if (type == VoucherType.PERCENTAGE) this.percentage = value;
+            public Voucher(String detail, int value) {
                 available = true;
                 this.detail = detail;
                 Intent pay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
-                pay_Intent.putExtra("ID", ID);
                 pay_Intent.putExtra("value", value);
-                pay_Intent.putExtra("date",dateString);
                 pay_Intent.putExtra("percentage", percentage);
                 Intent voucher_Intent = new Intent(MainActivity.this, ListVoucher.class);
-                voucher_Intent.putExtra("ID", ID);
                 voucher_Intent.putExtra("value", value);
-                voucher_Intent.putExtra("date",dateString);
                 voucher_Intent.putExtra("percentage", percentage);
                 voucher_Intent.putExtra("detail",detail);
             }
@@ -148,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         class Bill
         {
             public String ID;
-            public Date date;
+            public String dateString;
             public int billAmount;
             public Voucher voucher;
             public int BillDiscount;
@@ -156,26 +143,33 @@ public class MainActivity extends AppCompatActivity {
             public boolean state;
             public int point;
 
-            public Bill(String ID, Date date, int billAmount) {
+            public Bill(String ID, String date, int billAmount) {
                 this.ID = ID;
-                this.date = date;
+                this.dateString = date;
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
+<<<<<<< HEAD
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 String dateString = formatter.format(date);
 
+=======
+>>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
                 Intent bill_Intent = new Intent(MainActivity.this, Bill_n_voucher.class);
                 bill_Intent.putExtra("ID", ID);
                 bill_Intent.putExtra("billAmount", billAmount);
-                bill_Intent.putExtra("date",dateString);
-                startActivity(bill_Intent);
+                bill_Intent.putExtra("date",date);
                 Intent bill_pay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
                 bill_pay_Intent.putExtra("ID", ID);
                 bill_pay_Intent.putExtra("billAmount", billAmount);
+<<<<<<< HEAD
                 bill_pay_Intent.putExtra("date",dateString);
                 // TO DO
+=======
+                bill_pay_Intent.putExtra("date",date);
+>>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
             }
+
 
 
             // Hiện thực hàm khởi tạo Bill() nhận tham số là chuỗi json được quét từ QR,
@@ -189,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
             // https://firebase.google.com/docs/database/android/read-and-write?authuser=0
             //
         }
+        new Bill(ID, dateString, billAmount);
         class User {
 
             public String ID;
@@ -200,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
             public Voucher[] VoucherDatabase;
             public int voucherAvailable;
             public Bill[] History;
-            public int visitTimes;
 
             public User() {
                 // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -214,7 +208,6 @@ public class MainActivity extends AppCompatActivity {
                 this.phone = phone;
                 this.address = address;
                 this.rank = Rank.NEW;
-                this.visitTimes = 0;
                 this.point = 0;
             }
 
@@ -227,7 +220,58 @@ public class MainActivity extends AppCompatActivity {
         mData.child("User").setValue(usr); */
         //
 
+        //Xử lý sau khi cashier xác nhận bill
+        mData = FirebaseDatabase.getInstance().getReference();
+        mData.addValueEventListener(new ValueEventListener() {
+
+            private Class history;
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Chack trạng thái thanh toán
+                upbstate = Integer.parseInt(dataSnapshot.child("unpaidbill").child("state").getValue().toString());
+                //Nếu đã thanh toán
+                if (upbstate == 1)
+                {
+                    //TODO
+                    //Set các giá trị
+                    upbcustomerid = dataSnapshot.child("unpaidbill").child("customerid").getValue().toString();
+                    upbtotal = Integer.parseInt(dataSnapshot.child("unpaidbill").child("billtotal").getValue().toString());
+                    upbamount = Integer.parseInt(dataSnapshot.child("unpaidbill").child("billamount").getValue().toString());
+                    upbid =  dataSnapshot.child("unpaidbill").child("billid").getValue().toString();
+                    upbdate = dataSnapshot.child("unpaidbill").child("date").toString();
+                    upbpoint = Integer.parseInt(dataSnapshot.child("unpaidbill").child("point").getValue().toString());
+                    upbvoucherid = dataSnapshot.child("unpaidbill").child("voucherid").getValue().toString();
+
+                    //Thêm bill vào history
+                    bill newbill = new bill(upbamount, upbid,upbtotal,upbcustomerid,upbdate,upbpoint,upbstate,upbvoucherid);
+                    mData.child("customer").child(upbcustomerid).child("history").child(upbid).setValue(newbill);
+                    Toast.makeText(MainActivity.this, "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
+
+                    //Sửa point
+                    oldpoint = Integer.parseInt(dataSnapshot.child("customer").child(upbcustomerid).child("point").getValue().toString());
+                    newpoint = upbpoint + oldpoint;
+                    mData.child("customer").child(upbcustomerid).child("point").setValue(newpoint);
+
+                    //reset unpaid bill
+                    mData.child("unpaidbill").child("billamount").setValue(0);
+                    mData.child("unpaidbill").child("billid").setValue("null");
+                    mData.child("unpaidbill").child("billtotal").setValue(0);
+                    //mData.child("unpaidbill").child("customerid").setValue("null");
+                    mData.child("unpaidbill").child("date").setValue("null");
+                    mData.child("unpaidbill").child("point").setValue(0);
+                    mData.child("unpaidbill").child("state").setValue(0);
+                    mData.child("unpaidbill").child("voucherid").setValue("null");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, "Thanh toán thất bại!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
 
 
