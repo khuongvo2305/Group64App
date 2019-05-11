@@ -14,8 +14,10 @@ public class Bill_n_pay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_n_pay);
         String ID = getIntent().getStringExtra("ID");
-        int billAmount = getIntent().getIntExtra("billAmount",0);
+        String billAmount = getIntent().getStringExtra("billAmount");
         String dateString = getIntent().getStringExtra("dateString");
+
+        int billInt = Integer.parseInt(billAmount);
         int value = getIntent().getIntExtra("value",0);
         int percentage = getIntent().getIntExtra("percentage",0);
 
@@ -26,8 +28,8 @@ public class Bill_n_pay extends AppCompatActivity {
         TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
         txtTongbill.setText(dateString);
         int giamgia,thanhtoan;
-        giamgia = value + percentage*billAmount;
-        thanhtoan = billAmount - giamgia;
+        giamgia = value + percentage*billInt;
+        thanhtoan = billInt - giamgia;
         TextView txtTongbill3 = (TextView) findViewById(R.id.txtTongbill3);
         txtTongbill3.setText(giamgia);
         TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
