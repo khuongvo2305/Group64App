@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
     Button BtnName, BtnRank,BtnPoint;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
         BtnLienhe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LienHe.class);
+                Intent intent = new Intent(MainActivity.this, Bill_n_voucher.class);
                 startActivity(intent);
             }
         });
@@ -163,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 this.state = false; //chưa thanh toán
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 String dateString = formatter.format(date);
+
                 Intent bill_Intent = new Intent(MainActivity.this, Bill_n_voucher.class);
                 bill_Intent.putExtra("ID", ID);
                 bill_Intent.putExtra("billAmount", billAmount);
@@ -172,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
                 bill_pay_Intent.putExtra("ID", ID);
                 bill_pay_Intent.putExtra("billAmount", billAmount);
                 bill_pay_Intent.putExtra("date",dateString);
-
                 // TO DO
             }
 

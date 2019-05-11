@@ -8,6 +8,17 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
         android:id="@+id/imageView2"
         android:layout_width="514dp"
         android:layout_height="91dp"
@@ -85,17 +96,28 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/dathang_home" />
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="248dp"
-        android:layout_height="171dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginLeft="108dp"
-        android:layout_marginTop="212dp"
-        android:text="List voucher"
+
+    <ListView
+        android:id="@+id/ListView_ID"
+        android:layout_width="400dp"
+        android:layout_height="461dp"
+        android:layout_marginTop="144dp"
         android:textStyle="bold"
-        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="8dp"
+        android:text="CHỌN VOUCHER CỦA BẠN"
+        android:textColor="#006241"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,29 +9,56 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Bill_n_voucher extends AppCompatActivity {
-    private Button useVoucherBtn;
+    private Button useVoucherBtn, xacnhanBtn;
+    private DatabaseReference mdata;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
-        String ID = getIntent().getStringExtra("ID");
-        int billAmount = getIntent().getIntExtra("billAmount",0);
-        String dateString = getIntent().getStringExtra("dateString");
-
-        TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
-        txtMabill.setText(ID);
-        TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
-        txtTongbill.setText(billAmount);
-        TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
-        txtTongbill.setText(dateString);
+        final String IDUser = "DY5mTB6wIVSHY9FSd8HuhUIQ0FJ3";
+        final String billAmount="180000";
+        final String date = "08/08/1999";
+        final String IDBill = "MT199";
         useVoucherBtn = (Button) findViewById(R.id.useVoucherBtn);
         useVoucherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent voucher_intent = new Intent(Bill_n_voucher.this, VoucherActivity.class);
-                startActivity(voucher_intent);
+                Intent intentPay = new Intent(Bill_n_voucher.this, ListVoucher.class);
+                intentPay.putExtra("IDUser", IDUser);
+                intentPay.putExtra("billAmount", billAmount);
+                intentPay.putExtra("date", date);
+                intentPay.putExtra("IDBill", IDBill);
+                startActivity(intentPay);
+            }
+        });
+        xacnhanBtn = (Button) findViewById(R.id.xacnhan) ;
+        xacnhanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent xacnhan_intent = new Intent(Bill_n_voucher.this, ScanActivity.class);
+                TextView mahoadon = (TextView) findViewById(R.id.txtMabill);
+                TextView ngay = (TextView) findViewById(R.id.txtNgayinbill);
+                TextView tongcong = (TextView) findViewById(R.id.txtTongbill);
+                TextView voucher = (TextView) findViewById(R.id.txtTongbill2);
+                TextView giamgia = (TextView) findViewById(R.id.txtTongbill3);
+                TextView thanhtoan = (TextView) findViewById(R.id.txtTongbill5);
+                int point = Integer.parseInt(tongcong.getText().toString())%10000;
+                String Point = String.valueOf(point);
+                mdata = FirebaseDatabase.getInstance().getReference();
+                mdata.child("unpaidbill").child("billid").setValue(mahoadon.getText().toString());
+                mdata.child("unpaidbill").child("billamount").setValue(tongcong.getText().toString());
+                mdata.child("unpaidbill").child("billtotal").setValue(thanhtoan.getText().toString());
+                mdata.child("unpaidbill").child("customerid").setValue(IDUser);
+                mdata.child("unpaidbill").child("date").setValue(ngay.getText().toString());
+                mdata.child("unpaidbill").child("point").setValue(Point);
+                mdata.child("unpaidbill").child("state").setValue("1");
+                mdata.child("unpaidbill").child("voucherid").setValue("null");
+                startActivity(xacnhan_intent);
             }
         });
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
