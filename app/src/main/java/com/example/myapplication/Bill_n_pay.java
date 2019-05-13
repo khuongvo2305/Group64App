@@ -33,15 +33,14 @@ public class Bill_n_pay extends AppCompatActivity {
         String DetailVoucher = getIntent().getStringExtra("Detail");
 =======
         String ID = getIntent().getStringExtra("ID");
-        String billAmount = getIntent().getStringExtra("billAmount");
+        int billAmount = getIntent().getIntExtra("billAmount",0);
         String dateString = getIntent().getStringExtra("dateString");
-
-        int billInt = Integer.parseInt(billAmount);
         int value = getIntent().getIntExtra("value",0);
         int percentage = getIntent().getIntExtra("percentage",0);
 >>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
 
         int giamgia,thanhtoan;
+<<<<<<< HEAD
 <<<<<<< HEAD
         float percentage = Float.parseFloat(Percen);
         float value = Float.parseFloat(Value);
@@ -104,6 +103,10 @@ public class Bill_n_pay extends AppCompatActivity {
 =======
         giamgia = value + percentage*billInt;
         thanhtoan = billInt - giamgia;
+=======
+        giamgia = value + percentage*billAmount;
+        thanhtoan = billAmount - giamgia;
+>>>>>>> parent of a26d972... Scanbill
         TextView txtTongbill3 = (TextView) findViewById(R.id.txtTongbill3);
         txtTongbill3.setText(giamgia);
         TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);

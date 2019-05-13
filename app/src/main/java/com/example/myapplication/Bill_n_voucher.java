@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,6 +21,7 @@ public class Bill_n_voucher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
 <<<<<<< HEAD
+<<<<<<< HEAD
         final String IDUser = "DY5mTB6wIVSHY9FSd8HuhUIQ0FJ3";
         final String billAmount="180000";
         final String date = "08/08/1999";
@@ -31,15 +31,26 @@ public class Bill_n_voucher extends AppCompatActivity {
         String ID = intent.getStringExtra("ID");
         String billAmount = intent.getStringExtra("billAmount");
         String dateString = intent.getStringExtra("dateString");
+=======
+        String ID = getIntent().getStringExtra("ID");
+        int billAmount = getIntent().getIntExtra("billAmount",0);
+        String dateString = getIntent().getStringExtra("dateString");
+        String billAmountS =String.valueOf(billAmount);
+
+>>>>>>> parent of a26d972... Scanbill
         TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
         txtMabill.setText(ID);
         TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
-        txtTongbill.setText(billAmount);
+        txtTongbill.setText(billAmountS);
         TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
         txtNgayinbill.setText(dateString);
+<<<<<<< HEAD
         TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
         txtTongbill5.setText(billAmount);
 >>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
+=======
+
+>>>>>>> parent of a26d972... Scanbill
         useVoucherBtn = (Button) findViewById(R.id.useVoucherBtn);
         useVoucherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
