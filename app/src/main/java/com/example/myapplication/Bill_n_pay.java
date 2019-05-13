@@ -42,6 +42,7 @@ public class Bill_n_pay extends AppCompatActivity {
         int giamgia,thanhtoan;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         float percentage = Float.parseFloat(Percen);
         float value = Float.parseFloat(Value);
         float billAmount = Float.parseFloat(BillAmount);
@@ -103,6 +104,10 @@ public class Bill_n_pay extends AppCompatActivity {
 =======
         giamgia = value + percentage*billInt;
         thanhtoan = billInt - giamgia;
+=======
+        giamgia = value + percentage*billAmount;
+        thanhtoan = billAmount - giamgia;
+>>>>>>> parent of a26d972... Scanbill
 =======
         giamgia = value + percentage*billAmount;
         thanhtoan = billAmount - giamgia;

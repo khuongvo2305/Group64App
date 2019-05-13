@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+<<<<<<< HEAD
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+=======
+>>>>>>> parent of a26d972... Scanbill
 
 public class Bill_n_voucher extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
@@ -20,6 +23,7 @@ public class Bill_n_voucher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         final String IDUser = "DY5mTB6wIVSHY9FSd8HuhUIQ0FJ3";
@@ -32,11 +36,16 @@ public class Bill_n_voucher extends AppCompatActivity {
         String billAmount = intent.getStringExtra("billAmount");
         String dateString = intent.getStringExtra("dateString");
 =======
+=======
+>>>>>>> parent of a26d972... Scanbill
         String ID = getIntent().getStringExtra("ID");
         int billAmount = getIntent().getIntExtra("billAmount",0);
         String dateString = getIntent().getStringExtra("dateString");
         String billAmountS =String.valueOf(billAmount);
 
+<<<<<<< HEAD
+>>>>>>> parent of a26d972... Scanbill
+=======
 >>>>>>> parent of a26d972... Scanbill
         TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
         txtMabill.setText(ID);
@@ -45,9 +54,13 @@ public class Bill_n_voucher extends AppCompatActivity {
         TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
         txtNgayinbill.setText(dateString);
 <<<<<<< HEAD
+<<<<<<< HEAD
         TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
         txtTongbill5.setText(billAmount);
 >>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
+=======
+
+>>>>>>> parent of a26d972... Scanbill
 =======
 
 >>>>>>> parent of a26d972... Scanbill
