@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private ImageButton mFacebookBtn;
     private static final String TAG = "FACELOG";
     private FirebaseAuth mAuth;
-    public String idUser,fbName;
+    public String idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
                         handleFacebookAccessToken(loginResult.getAccessToken());
                         idUser = loginResult.getAccessToken().getUserId();
                     }
-
                     @Override
                     public void onCancel() {
                         Log.d(TAG, "facebook:onCancel");
@@ -73,15 +72,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if(currentUser != null) {
             updateUI();
         }
     }
     private void updateUI(){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-        Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + currentFirebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
         Intent accountIntent = new Intent(LoginActivity.this, MainActivity.class);
         accountIntent.putExtra("idUser",currentFirebaseUser.getUid());
+        accountIntent.putExtra("fbName",currentFirebaseUser.getDisplayName());
         startActivity(accountIntent);
         finish();
     }

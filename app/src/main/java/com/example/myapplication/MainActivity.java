@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String idUser = getIntent().getStringExtra("idUser");
+        String fbName = getIntent().getStringExtra("fbName");
         String ID = getIntent().getStringExtra("idBill");
         int billAmount = getIntent().getIntExtra("billAmount",0);
         String dateString = getIntent().getStringExtra("dateBill");
