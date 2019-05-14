@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
     Button BtnName, BtnRank,BtnPoint;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String idUser = getIntent().getStringExtra("idUser");
@@ -54,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
+                Intent intent = new Intent(MainActivity.this, Bill_n_voucher.class);
+=======
                 Intent intent = new Intent(MainActivity.this, account_Activity.class);
+>>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
                 startActivity(intent);
             }
         });
@@ -145,6 +150,12 @@ public class MainActivity extends AppCompatActivity {
                 this.billAmount = billAmount;
                 this.voucher = voucher;
                 this.state = false; //chưa thanh toán
+<<<<<<< HEAD
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String dateString = formatter.format(date);
+
+=======
+>>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
                 Intent bill_Intent = new Intent(MainActivity.this, Bill_n_voucher.class);
                 bill_Intent.putExtra("ID", ID);
                 bill_Intent.putExtra("billAmount", billAmount);
@@ -152,7 +163,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent bill_pay_Intent = new Intent(MainActivity.this, Bill_n_pay.class);
                 bill_pay_Intent.putExtra("ID", ID);
                 bill_pay_Intent.putExtra("billAmount", billAmount);
+<<<<<<< HEAD
+                bill_pay_Intent.putExtra("date",dateString);
+                // TO DO
+=======
                 bill_pay_Intent.putExtra("date",date);
+>>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
             }
 
 
