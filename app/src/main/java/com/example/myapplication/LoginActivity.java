@@ -24,13 +24,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
-import com.example.myapplication.MainActivity;
+
 public class LoginActivity extends AppCompatActivity {
     private CallbackManager mCallbackManager;
     private ImageButton mFacebookBtn;
     private static final String TAG = "FACELOG";
     private FirebaseAuth mAuth;
-    public String idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onSuccess(LoginResult loginResult) {
                         Log.d(TAG, "facebook:onSuccess:" + loginResult);
                         handleFacebookAccessToken(loginResult.getAccessToken());
-                        idUser = loginResult.getAccessToken().getUserId();
                     }
+
                     @Override
                     public void onCancel() {
                         Log.d(TAG, "facebook:onCancel");
@@ -66,22 +65,21 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
+    @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null) {
+        if(currentUser != null){
             updateUI();
         }
     }
     private void updateUI(){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-        Toast.makeText(this, "" + currentFirebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this,""+currentFirebaseUser.getUid(),Toast.LENGTH_LONG).show();
         Intent accountIntent = new Intent(LoginActivity.this, MainActivity.class);
-        accountIntent.putExtra("idUser",currentFirebaseUser.getUid());
-        accountIntent.putExtra("fbName",currentFirebaseUser.getDisplayName());
+        accountIntent.putExtra("IDUser",currentFirebaseUser.getUid());
         startActivity(accountIntent);
         finish();
     }

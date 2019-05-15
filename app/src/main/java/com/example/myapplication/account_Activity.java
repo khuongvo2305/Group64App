@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class account_Activity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    String ID = "DY5mTB6wIVSHY9FSd8HuhUIQ0FJ3";
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnLienhe,BtnAvartar,BtnIconStar;
     Button BtnThongtin, BtnLichSugiaodich, BtnDieuKhoan,BtnGuiPhanHoi,BtnCatdat, BtnDangXuat,BtnName,BtnRank,BtnPoint;
     @Override
@@ -105,6 +106,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, Thongtin_account.class);
+                intent.putExtra("ID", ID);
                 startActivity(intent);
             }
         });
@@ -113,6 +115,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, LichSuGiaoDich.class);
+                intent.putExtra("ID", ID);
                 startActivity(intent);
             }
         });
@@ -121,6 +124,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, DieuKhoanSudung.class);
+                intent.putExtra("ID", ID);
                 startActivity(intent);
             }
         });

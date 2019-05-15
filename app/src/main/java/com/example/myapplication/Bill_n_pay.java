@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +20,6 @@ public class Bill_n_pay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_n_pay);
-<<<<<<< HEAD
         Intent intent = getIntent();
         final String IDUser = getIntent().getStringExtra("IDUser");
         final String BillId = getIntent().getStringExtra("IDBill");
@@ -31,19 +29,8 @@ public class Bill_n_pay extends AppCompatActivity {
         final String BillAmount = getIntent().getStringExtra("billAmount");
         String Value = getIntent().getStringExtra("Value");
         String DetailVoucher = getIntent().getStringExtra("Detail");
-=======
-        String ID = getIntent().getStringExtra("ID");
-        int billAmount = getIntent().getIntExtra("billAmount",0);
-        String dateString = getIntent().getStringExtra("dateString");
-        int value = getIntent().getIntExtra("value",0);
-        int percentage = getIntent().getIntExtra("percentage",0);
->>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
 
         int giamgia,thanhtoan;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         float percentage = Float.parseFloat(Percen);
         float value = Float.parseFloat(Value);
         float billAmount = Float.parseFloat(BillAmount);
@@ -102,26 +89,6 @@ public class Bill_n_pay extends AppCompatActivity {
                 startActivity(voucher_intent);
             }
         });
-=======
-        giamgia = value + percentage*billInt;
-        thanhtoan = billInt - giamgia;
-=======
-        giamgia = value + percentage*billAmount;
-        thanhtoan = billAmount - giamgia;
->>>>>>> parent of a26d972... Scanbill
-=======
-        giamgia = value + percentage*billAmount;
-        thanhtoan = billAmount - giamgia;
->>>>>>> parent of a26d972... Scanbill
-=======
-        giamgia = value + percentage*billAmount;
-        thanhtoan = billAmount - giamgia;
->>>>>>> parent of a26d972... Scanbill
-        TextView txtTongbill3 = (TextView) findViewById(R.id.txtTongbill3);
-        txtTongbill3.setText(giamgia);
-        TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
-        txtTongbill5.setText(thanhtoan);
->>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override

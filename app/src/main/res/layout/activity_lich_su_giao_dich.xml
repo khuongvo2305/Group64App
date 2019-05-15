@@ -8,94 +8,50 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="514dp"
-        android:layout_height="91dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/nen" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
-    <ImageButton
-        android:id="@+id/BtnTichdiem"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/BtnDatHang"
-        app:srcCompat="@drawable/tichdiem_home" />
 
-    <ImageButton
-        android:id="@+id/BtnHome"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="20dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton20"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/BtnTichdiem"
-        app:srcCompat="@drawable/tintuc_home" />
 
-    <ImageButton
-        android:id="@+id/BtnTaiKhoan"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="20dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/taikhoan_home" />
-
-    <ImageButton
-        android:id="@+id/BtnCuaHang"
-        android:layout_width="64dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="20dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton19"
-        app:layout_constraintStart_toEndOf="@+id/BtnHome"
-        app:srcCompat="@drawable/cuahang_home" />
-
-    <ImageButton
-        android:id="@+id/BtnDatHang"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="20dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/dathang_home" />
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="248dp"
-        android:layout_height="171dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginLeft="108dp"
-        android:layout_marginTop="212dp"
-        android:text="LichSugiaodich"
+    <ListView
+        android:id="@+id/ListView_ID"
+        android:layout_width="400dp"
+        android:layout_height="461dp"
+        android:layout_marginTop="144dp"
         android:textStyle="bold"
-        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="286dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="28dp"
+        android:text="CÁC MÃ GIAO DỊCH CỦA BẠN"
+        android:textColor="#006241"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="8dp"
+        android:text="Quay lại"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ListView_ID" />
 
 </android.support.constraint.ConstraintLayout>

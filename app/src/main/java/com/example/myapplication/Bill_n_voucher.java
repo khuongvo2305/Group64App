@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,75 +7,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-<<<<<<< HEAD
-<<<<<<< HEAD
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-=======
->>>>>>> parent of a26d972... Scanbill
-=======
->>>>>>> parent of a26d972... Scanbill
 
 public class Bill_n_voucher extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
     private DatabaseReference mdata;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
-    @Override
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        final String IDUser = "DY5mTB6wIVSHY9FSd8HuhUIQ0FJ3";
-        final String billAmount="180000";
-        final String date = "08/08/1999";
-        final String IDBill = "MT199";
-=======
-        Intent intent = this.getIntent();
-        String ID = intent.getStringExtra("ID");
-        String billAmount = intent.getStringExtra("billAmount");
-        String dateString = intent.getStringExtra("dateString");
-=======
-=======
->>>>>>> parent of a26d972... Scanbill
-=======
->>>>>>> parent of a26d972... Scanbill
-        String ID = getIntent().getStringExtra("ID");
-        int billAmount = getIntent().getIntExtra("billAmount",0);
-        String dateString = getIntent().getStringExtra("dateString");
-        String billAmountS =String.valueOf(billAmount);
-
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of a26d972... Scanbill
-=======
->>>>>>> parent of a26d972... Scanbill
-=======
->>>>>>> parent of a26d972... Scanbill
+        final String IDUser = getIntent().getStringExtra("IDUser");
+        final String IDBill = getIntent().getStringExtra("IDBill");
+        final String date = getIntent().getStringExtra("date");
+        final String billAmount = getIntent().getStringExtra("billAmount");
+        Toast.makeText(Bill_n_voucher.this,""+IDUser,Toast.LENGTH_LONG).show();
         TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
-        txtMabill.setText(ID);
+        txtMabill.setText(IDBill);
         TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
-        txtTongbill.setText(billAmountS);
+        txtTongbill.setText(billAmount);
         TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
-        txtNgayinbill.setText(dateString);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+        txtNgayinbill.setText(date);
         TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
         txtTongbill5.setText(billAmount);
->>>>>>> a26d972f5f72ed063b7edbf55f44f1303656fc18
-=======
-
->>>>>>> parent of a26d972... Scanbill
-=======
-
->>>>>>> parent of a26d972... Scanbill
-=======
-
->>>>>>> parent of a26d972... Scanbill
         useVoucherBtn = (Button) findViewById(R.id.useVoucherBtn);
         useVoucherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +65,7 @@ public class Bill_n_voucher extends AppCompatActivity {
                 mdata.child("unpaidbill").child("customerid").setValue(IDUser);
                 mdata.child("unpaidbill").child("date").setValue(ngay.getText().toString());
                 mdata.child("unpaidbill").child("point").setValue(Point);
-                mdata.child("unpaidbill").child("state").setValue("1");
+                mdata.child("unpaidbill").child("state").setValue("0");
                 mdata.child("unpaidbill").child("voucherid").setValue("null");
                 startActivity(xacnhan_intent);
             }

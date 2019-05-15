@@ -185,7 +185,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="16dp"
         android:background="@null"
-        android:text="Điều khoản sử dụng "
+        android:text="Quản lý voucher"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageButton14"
         app:layout_constraintTop_toBottomOf="@+id/button13" />

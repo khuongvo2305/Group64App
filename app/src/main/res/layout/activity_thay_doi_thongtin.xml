@@ -22,7 +22,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
@@ -42,10 +42,9 @@
         android:id="@+id/textView18"
         android:layout_width="311dp"
         android:layout_height="52dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="36dp"
-        android:text="Thông tin tài khoản"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:text="Thay đổi thông tin"
         android:textColor="#006241"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -155,12 +154,22 @@
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginLeft="96dp"
         android:layout_marginTop="28dp"
-        android:text="Hoàn thành"
+        android:text="Xác nhận"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:text="Quay lại"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
 </android.support.constraint.ConstraintLayout>
