@@ -29,7 +29,6 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import com.example.myapplication.MainActivity;
 public class ScanActivity extends AppCompatActivity {
     private static final String LOG_TAG = "Barcode Scanner API";
     private static final int PHOTO_REQUEST = 10;
@@ -50,7 +49,7 @@ public class ScanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan);
-        Button btnquet = (Button) findViewById(R.id.btnquet);
+        Button btnquet = (Button) findViewById(R.id.btntaobill);
         scanResults = (TextView) findViewById(R.id.scan_results);
         scanResults_ID = (TextView) findViewById(R.id.txtMabill);
         scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);

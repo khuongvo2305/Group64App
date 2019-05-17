@@ -30,7 +30,7 @@ public class Bill_n_pay extends AppCompatActivity {
         int giamgia,thanhtoan;
         giamgia = value + percentage*billInt;
         thanhtoan = billInt - giamgia;
-        TextView txtTongbill3 = (TextView) findViewById(R.id.txtTongbill3);
+        TextView txtTongbill3 = (TextView) findViewById(R.id.txtMaKH);
         txtTongbill3.setText(giamgia);
         TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
         txtTongbill5.setText(thanhtoan);

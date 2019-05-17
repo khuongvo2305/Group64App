@@ -7,18 +7,6 @@
     android:background="@drawable/backgroud"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="7dp"
-        android:background="@null"
-        android:text="@string/diem"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
     <ImageButton
         android:id="@+id/imageButton8"
         android:layout_width="40dp"
@@ -51,36 +39,10 @@
         android:layout_marginLeft="72dp"
         android:layout_marginTop="4dp"
         android:background="@null"
-        android:text="@string/rank"
+        android:text="CASHIER"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button6" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="18dp"
-        android:layout_height="14dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginLeft="164dp"
-        android:layout_marginTop="8dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"
-        app:srcCompat="@drawable/ngoisao_home" />
-
-    <ImageButton
-        android:id="@+id/imageButton9"
-        android:layout_width="57dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="348dp"
-        android:layout_marginLeft="348dp"
-        android:layout_marginTop="8dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lienhe_store" />
 
     <ImageButton
         android:id="@+id/imageButton11"
@@ -188,7 +150,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="TẠO HOÁ ĐƠN MỚI"
+        android:text="NHẬP TỔNG BILL"
         android:textColor="#006241"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -214,15 +176,32 @@
 
     <Button
         android:id="@+id/btntaobill"
-        android:layout_width="95dp"
-        android:layout_height="62dp"
+        android:layout_width="97dp"
+        android:layout_height="64dp"
         android:layout_marginTop="332dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Tạo"
+        android:text="Tạo Bill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtSoTien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Nhập số tiền"
+        app:layout_constraintBottom_toTopOf="@+id/btntaobill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
 
 </android.support.constraint.ConstraintLayout>

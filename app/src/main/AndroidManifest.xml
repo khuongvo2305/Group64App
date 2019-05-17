@@ -29,6 +29,10 @@
         <activity android:name=".TichDiem_Activity" />
         <activity android:name=".account_Activity" />
         <activity android:name=".VoucherActivity" />
+        <activity android:name=".BillQRActivity" />
+        <activity android:name=".CashierLastBillActivity" />
+        <activity android:name=".CashierNewBillActivity" />
+
         <activity android:name=".Bill_n_voucher" />
         <activity android:name=".LoginActivity">
             <intent-filter>

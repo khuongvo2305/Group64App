@@ -7,18 +7,6 @@
     android:background="@drawable/backgroud"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="7dp"
-        android:background="@null"
-        android:text="@string/diem"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
     <ImageButton
         android:id="@+id/imageButton8"
         android:layout_width="40dp"
@@ -51,36 +39,10 @@
         android:layout_marginLeft="72dp"
         android:layout_marginTop="4dp"
         android:background="@null"
-        android:text="@string/rank"
+        android:text="CASHIER"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button6" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="18dp"
-        android:layout_height="14dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginLeft="164dp"
-        android:layout_marginTop="8dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"
-        app:srcCompat="@drawable/ngoisao_home" />
-
-    <ImageButton
-        android:id="@+id/imageButton9"
-        android:layout_width="57dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="348dp"
-        android:layout_marginLeft="348dp"
-        android:layout_marginTop="8dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lienhe_store" />
 
     <ImageButton
         android:id="@+id/imageButton11"
@@ -103,101 +65,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="457dp"
-        android:layout_height="30dp"
-        android:text="_____________________________________________________________"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
         android:id="@+id/textView7"
         android:layout_width="457dp"
         android:layout_height="30dp"
         android:text="_____________________________________________________________"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="COUPON của bạn "
-        android:textColor="#006241"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Bạn có coupon phù hợp với đơn hàng này !! "
-        android:textColor="#006241"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-    <Button
-        android:id="@+id/useVoucherBtn"
-        android:layout_width="67dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Sử dụng ngay"
-        android:textSize="10sp"
-        android:textColor="#006241"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Thanh toán bằng"
-        android:textColor="#006241"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <ImageButton
-        android:id="@+id/imageButton7"
-        android:layout_width="72dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:srcCompat="@drawable/momo_store" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="65dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="12dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toEndOf="@+id/imageButton7"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:srcCompat="@drawable/zalopay_store" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -389,7 +262,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:gravity="right"
-            android:text="Giảm giá:"
+            android:text="Mã KH:"
             android:textColor="#006241"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -529,6 +402,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonDaThanhToan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="90dp"
+        android:text="Đã Thanh Toán"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+    <Button
+        android:id="@+id/buttonHuyDonHang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:text="Huỷ"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonDaThanhToan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toEndOf="@+id/buttonDaThanhToan" />
+
 
 </android.support.constraint.ConstraintLayout>

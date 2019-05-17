@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         BtnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DatHang_Activity.class);
+                Intent intent = new Intent(MainActivity.this, CashierNewBillActivity.class);
                 startActivity(intent);
             }
         });
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         BtnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Map_Activity.class);
+                Intent intent = new Intent(MainActivity.this, CashierNewBillActivity.class);
                 startActivity(intent);
             }
         });
