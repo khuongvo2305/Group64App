@@ -15,17 +15,36 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Bill_n_voucher extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
     private DatabaseReference mdata;
-    String fbName;
+    private TextView scanResults;
+    private TextView scanResults_ID;
+    private TextView scanResults_Date;
+    private TextView scanResults_BillAmount;
+    String fbName, QRCode;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     Button BtnName;
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
+
+            scanResults = (TextView) findViewById(R.id.scan_results);
+            scanResults_ID = (TextView) findViewById(R.id.txtMabill);
+            scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);
+            scanResults_BillAmount = (TextView) findViewById(R.id.txtTongbill);
         BtnName = (Button) findViewById(R.id.button6);
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
+        }
+        if (getIntent().getStringExtra("QR") != null)
+        {
+            QRCode = getIntent().getStringExtra("QR");
+            String[] output = QRCode.split("-");
+            Toast.makeText(this, QRCode, Toast.LENGTH_LONG);
+            //scanResults.setText(QRCode);
+            scanResults_ID.setText(output[0]);
+            scanResults_Date.setText(output[1]);
+            scanResults_BillAmount.setText(output[2]);
         }
         final String IDUser = getIntent().getStringExtra("IDUser");
         final String IDBill = getIntent().getStringExtra("IDBill");
