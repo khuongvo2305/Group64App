@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class account_Activity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    String ID = "DY5mTB6wIVSHY9FSd8HuhUIQ0FJ3";
+    String ID,fbName;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnLienhe,BtnAvartar,BtnIconStar;
     Button BtnThongtin, BtnLichSugiaodich, BtnDieuKhoan,BtnGuiPhanHoi,BtnCatdat, BtnDangXuat,BtnName,BtnRank,BtnPoint;
     @Override
@@ -21,11 +21,21 @@ public class account_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account);
         mAuth = FirebaseAuth.getInstance();
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            ID = getIntent().getStringExtra("IDUser");
+        }
+        BtnName = (Button) findViewById(R.id.button6) ;
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+            BtnName.setText(fbName);
+        }
         BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
         BtnLienhe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, LienHe.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -34,6 +44,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, TichDiem_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -42,14 +53,15 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, TichDiem_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
-        BtnName = (Button) findViewById(R.id.button6) ;
         BtnName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, TichDiem_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -58,6 +70,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, TichDiem_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -66,6 +79,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, TichDiem_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -74,6 +88,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, MainActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -82,6 +97,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, DatHang_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -90,6 +106,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, Map_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -98,6 +115,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -106,6 +124,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, Thongtin_account.class);
+                intent.putExtra("fbName",fbName);
                 intent.putExtra("ID", ID);
                 startActivity(intent);
             }
@@ -115,6 +134,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, LichSuGiaoDich.class);
+                intent.putExtra("fbName",fbName);
                 intent.putExtra("ID", ID);
                 startActivity(intent);
             }
@@ -124,6 +144,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, DieuKhoanSudung.class);
+                intent.putExtra("fbName",fbName);
                 intent.putExtra("ID", ID);
                 startActivity(intent);
             }
@@ -133,6 +154,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, GuiPhanHoi.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -141,6 +163,7 @@ public class account_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(account_Activity.this, CaiDat.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });

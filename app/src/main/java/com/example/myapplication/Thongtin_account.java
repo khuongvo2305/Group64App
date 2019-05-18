@@ -20,11 +20,15 @@ public class Thongtin_account extends AppCompatActivity {
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     Button thaydoi;
     TextView hoten, ngaysinh, diachi, sodienthoai;
+    String fbName;
     private DatabaseReference mdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thongtin_account);
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+        }
         Intent intent = getIntent();
         final String ID = intent.getStringExtra("ID");
         mdata =FirebaseDatabase.getInstance().getReference();
@@ -90,6 +94,7 @@ public class Thongtin_account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Thongtin_account.this, account_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -98,6 +103,7 @@ public class Thongtin_account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Thongtin_account.this, MainActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -106,6 +112,7 @@ public class Thongtin_account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Thongtin_account.this, DatHang_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -114,6 +121,7 @@ public class Thongtin_account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Thongtin_account.this, Map_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -122,6 +130,7 @@ public class Thongtin_account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Thongtin_account.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });

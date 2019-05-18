@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -33,6 +34,8 @@ import java.util.HashMap;
 
 public class ListVoucher extends AppCompatActivity {
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore, BtnAccount;
+    Button BtnName;
+    String fbName;
 
 
     private  DatabaseReference mdata;
@@ -50,6 +53,11 @@ public class ListVoucher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_voucher);
+        BtnName = (Button) findViewById(R.id.button6) ;
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+            BtnName.setText(fbName);
+        }
         Intent intent = getIntent();
         final String ID = intent.getStringExtra("IDUser");
         final String BillId = intent.getStringExtra("IDBill");
@@ -142,6 +150,7 @@ public class ListVoucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListVoucher.this, MainActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -150,6 +159,7 @@ public class ListVoucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListVoucher.this, DatHang_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -158,6 +168,7 @@ public class ListVoucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListVoucher.this, Map_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -166,6 +177,7 @@ public class ListVoucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListVoucher.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });

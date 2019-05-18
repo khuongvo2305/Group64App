@@ -25,6 +25,7 @@ import java.util.Collections;
 public class LichSuGiaoDich extends AppCompatActivity {
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore, BtnAccount;
     Button Quaylai;
+    String fbName;
     private  DatabaseReference mdata;
     private  ListView listView;
     private  ArrayList<String> arraybillid = new ArrayList<>();
@@ -41,6 +42,9 @@ public class LichSuGiaoDich extends AppCompatActivity {
         setContentView(R.layout.activity_lich_su_giao_dich);
         Intent intent = getIntent();
         final String ID = intent.getStringExtra("ID");
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+        }
         mdata= FirebaseDatabase.getInstance().getReference();
         listView = (ListView) findViewById(R.id.ListView_ID);
         mdata.child("customer").child(ID).child("history").addChildEventListener(new ChildEventListener() {
@@ -172,6 +176,7 @@ public class LichSuGiaoDich extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LichSuGiaoDich.this, account_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });

@@ -41,7 +41,8 @@ public class ScanActivity extends AppCompatActivity {
     private static final String SAVED_INSTANCE_URI = "uri";
     private static final String SAVED_INSTANCE_RESULT = "result";
     ImageButton BtnAccount, BtnHome, BtnOrder, BtnMap;
-    String IDUser;
+    Button BtnName;
+    String IDUser,fbName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,11 @@ public class ScanActivity extends AppCompatActivity {
         if (getIntent().getStringExtra("IDUser") != null)
         {
             IDUser = getIntent().getStringExtra("IDUser");
+        }
+        BtnName = (Button) findViewById(R.id.button6);
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+            BtnName.setText(fbName);
         }
         Button btnquet = (Button) findViewById(R.id.btnquet);
         scanResults = (TextView) findViewById(R.id.scan_results);
@@ -85,6 +91,7 @@ public class ScanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, account_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -93,6 +100,7 @@ public class ScanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, MainActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -101,6 +109,7 @@ public class ScanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, DatHang_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -109,6 +118,7 @@ public class ScanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, Map_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -140,6 +150,7 @@ public class ScanActivity extends AppCompatActivity {
                         Barcode code = barcodes.valueAt(index);
                         String[] output = ((String)(scanResults.getText())).split("-");
                         scanResults.setText(scanResults.getText() + code.displayValue + "\n");
+
 ////                        scanResults_ID.setText(output[0] + code.displayValue + "\n");
 ////                        scanResults_Date.setText(output[1] + code.displayValue + "\n");
 ////                        scanResults_BillAmount.setText(output[2] + code.displayValue + "\n");

@@ -34,7 +34,6 @@ public class Bill_n_pay extends AppCompatActivity {
         float percentage = Float.parseFloat(Percen);
         float value = Float.parseFloat(Value);
         float billAmount = Float.parseFloat(BillAmount);
-
         giamgia = (int) (value + percentage*billAmount);
         String GiamGiaview = String.valueOf(giamgia);
 
