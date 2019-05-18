@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class Map_Activity extends AppCompatActivity {
     ImageButton BtnAccount, BtnHome, BtnOrder, BtnStore;
-    String fbName;
+    String fbName,IDUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +18,17 @@ public class Map_Activity extends AppCompatActivity {
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
         }
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Map_Activity.this, account_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -33,6 +38,7 @@ public class Map_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Map_Activity.this, DatHang_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -42,6 +48,7 @@ public class Map_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Map_Activity.this, MainActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -51,6 +58,7 @@ public class Map_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Map_Activity.this, ScanActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });

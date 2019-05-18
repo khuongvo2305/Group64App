@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LienHe.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -80,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -89,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -108,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DatHang_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -117,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Map_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });

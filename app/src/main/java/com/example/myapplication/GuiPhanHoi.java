@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 public class GuiPhanHoi extends AppCompatActivity {
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
-    String fbName;
+    String fbName,IDUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,12 +17,17 @@ public class GuiPhanHoi extends AppCompatActivity {
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
         }
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
         BtnAccount = (ImageButton) findViewById(R.id.BtnTaiKhoan) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GuiPhanHoi.this, account_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -32,6 +37,7 @@ public class GuiPhanHoi extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GuiPhanHoi.this, MainActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -41,6 +47,7 @@ public class GuiPhanHoi extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GuiPhanHoi.this, DatHang_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -50,6 +57,7 @@ public class GuiPhanHoi extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GuiPhanHoi.this, Map_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -59,6 +67,7 @@ public class GuiPhanHoi extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GuiPhanHoi.this, ScanActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });

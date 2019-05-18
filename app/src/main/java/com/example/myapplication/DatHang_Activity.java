@@ -11,13 +11,17 @@ import android.widget.Toast;
 public class DatHang_Activity extends AppCompatActivity {
     ImageButton BtnAccount, BtnHome, BtnMap, BtnStore;
     Button BtnName;
-    String fbName;
+    String fbName,IDUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dathang);
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
+        }
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
         }
         Toast.makeText(DatHang_Activity.this,""+fbName,Toast.LENGTH_LONG).show();
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
@@ -26,6 +30,7 @@ public class DatHang_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, account_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -35,6 +40,7 @@ public class DatHang_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, MainActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -44,6 +50,7 @@ public class DatHang_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, Map_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -53,6 +60,7 @@ public class DatHang_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });

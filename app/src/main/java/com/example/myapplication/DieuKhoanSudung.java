@@ -33,7 +33,7 @@ public class DieuKhoanSudung extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dieu_khoan_sudung);
         Intent intent = getIntent();
-        final String ID = intent.getStringExtra("ID");
+        final String ID = intent.getStringExtra("IDUser");
         adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arraydetail);
         mdata= FirebaseDatabase.getInstance().getReference();
         listView = (ListView) findViewById(R.id.ListView_ID);

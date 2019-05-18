@@ -12,7 +12,7 @@ import java.util.Date;
 public class LienHe extends AppCompatActivity {
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     Button BtnName;
-    String fbName;
+    String fbName,IDUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +22,17 @@ public class LienHe extends AppCompatActivity {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
         }
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
         BtnAccount = (ImageButton) findViewById(R.id.BtnTaiKhoan) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LienHe.this, account_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -37,6 +42,7 @@ public class LienHe extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LienHe.this, MainActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -46,6 +52,7 @@ public class LienHe extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LienHe.this, DatHang_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -55,6 +62,7 @@ public class LienHe extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LienHe.this, Map_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -64,6 +72,7 @@ public class LienHe extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LienHe.this, ScanActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });

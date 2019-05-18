@@ -35,7 +35,7 @@ import java.util.HashMap;
 public class ListVoucher extends AppCompatActivity {
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore, BtnAccount;
     Button BtnName;
-    String fbName;
+    String fbName,IDUser;
 
 
     private  DatabaseReference mdata;
@@ -57,6 +57,10 @@ public class ListVoucher extends AppCompatActivity {
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
+        }
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
         }
         Intent intent = getIntent();
         final String ID = intent.getStringExtra("IDUser");

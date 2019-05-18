@@ -92,6 +92,7 @@ public class ScanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, account_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -101,6 +102,7 @@ public class ScanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, MainActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -110,6 +112,7 @@ public class ScanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, DatHang_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -119,6 +122,7 @@ public class ScanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, Map_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });

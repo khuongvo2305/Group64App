@@ -20,7 +20,7 @@ public class ThayDoiThongtin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thay_doi_thongtin);
         Intent intent = getIntent();
-        final String ID = intent.getStringExtra("ID");
+        final String ID = intent.getStringExtra("IDUser");
         mdata = FirebaseDatabase.getInstance().getReference();
         hoten = (EditText) findViewById(R.id.editText);
         ngaysinh = (EditText) findViewById(R.id.editText2);

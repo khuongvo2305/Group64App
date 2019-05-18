@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 public class TichDiem_Activity extends AppCompatActivity {
     ImageButton BtnAccount, BtnOrder, BtnMap, BtnHome,BtnLienhe,BtnAvartar,BtnIconStar;
     Button BtnSudungvoucher,BtnName,BtnRank,BtnPoint;
-    String fbName;
+    String fbName,IDUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,12 +21,17 @@ public class TichDiem_Activity extends AppCompatActivity {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
         }
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
         BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
         BtnLienhe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, LienHe.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -36,6 +41,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -45,6 +51,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -54,6 +61,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -63,6 +71,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -72,6 +81,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, TichDiem_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -81,6 +91,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, account_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -90,6 +101,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, DatHang_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -99,6 +111,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, Map_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -108,6 +121,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, MainActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -117,6 +131,7 @@ public class TichDiem_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TichDiem_Activity.this, ListVoucher.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
