@@ -66,10 +66,9 @@ public class ScanActivity extends AppCompatActivity {
             imageUri = Uri.parse(savedInstanceState.getString(SAVED_INSTANCE_URI));
             String[] output = (savedInstanceState.getString(SAVED_INSTANCE_RESULT)).split("-");
             scanResults.setText(savedInstanceState.getString(SAVED_INSTANCE_RESULT));
-            scanResults_ID.setText(output[0]);
-            scanResults_Date.setText(output[1]);
-            scanResults_BillAmount.setText(output[2]);
-            setContentView(R.layout.bill_pickvoucher);
+//            scanResults_ID.setText(output[0]);
+//            scanResults_Date.setText(output[1]);
+//            scanResults_BillAmount.setText(output[2]);
         }
         btnquet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,10 +153,6 @@ public class ScanActivity extends AppCompatActivity {
                         Barcode code = barcodes.valueAt(index);
                         String[] output = ((String)(scanResults.getText())).split("-");
                         scanResults.setText(scanResults.getText() + code.displayValue + "\n");
-
-////                        scanResults_ID.setText(output[0] + code.displayValue + "\n");
-////                        scanResults_Date.setText(output[1] + code.displayValue + "\n");
-////                        scanResults_BillAmount.setText(output[2] + code.displayValue + "\n");
                         Intent billIntent = new Intent(ScanActivity.this,Bill_n_voucher.class);
                         billIntent.putExtra("IDBill", output[0]);
                         billIntent.putExtra("billAmount", output[2]);
@@ -165,6 +160,10 @@ public class ScanActivity extends AppCompatActivity {
                         billIntent.putExtra("IDUser",IDUser);
                         billIntent.putExtra("fbName",fbName);
                         startActivity(billIntent);
+////                        scanResults_ID.setText(output[0] + code.displayValue + "\n");
+////                        scanResults_Date.setText(output[1] + code.displayValue + "\n");
+////                        scanResults_BillAmount.setText(output[2] + code.displayValue + "\n");
+
                         //Required only if you need to extract the type of barcode
                         int type = barcodes.valueAt(index).valueFormat;
                         switch (type) {
