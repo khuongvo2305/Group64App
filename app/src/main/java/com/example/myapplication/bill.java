@@ -1,19 +1,16 @@
 package com.example.myapplication;
 
 public class bill {
-    public Integer billamount;
+    public String billamount;
     public String billid;
-    public Integer billtotal;
+    public String billtotal;
     public String customerid;
     public String date;
-    public Integer point;
-    public Integer state;
+    public String point;
+    public String state;
     public String voucherid;
 
-    public bill() {
-    }
-
-    public bill(Integer billamount, String billid, Integer billtotal, String customerid, String date, Integer point, Integer state, String voucherid) {
+    public bill(String billamount, String billid, String billtotal, String customerid, String date, String point, String state, String voucherid) {
         this.billamount = billamount;
         this.billid = billid;
         this.billtotal = billtotal;

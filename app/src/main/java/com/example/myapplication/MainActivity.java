@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Xử lý sau khi cashier xác nhận bill
         mData = FirebaseDatabase.getInstance().getReference();
-        mData.addValueEventListener(new ValueEventListener() {
+        /*mData.addValueEventListener(new ValueEventListener() {
 
             private Class history;
 
@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(MainActivity.this, "Thanh toán thất bại!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
 
