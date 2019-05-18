@@ -15,30 +15,50 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Bill_n_voucher extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
     private DatabaseReference mdata;
-    String fbName;
+    private TextView scanResults;
+    private TextView scanResults_ID;
+    private TextView scanResults_Date;
+    private TextView scanResults_BillAmount;
+    String fbName, QRCode;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     Button BtnName;
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
+
+            scanResults = (TextView) findViewById(R.id.scan_results);
+            scanResults_ID = (TextView) findViewById(R.id.txtMabill);
+            scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);
+            scanResults_BillAmount = (TextView) findViewById(R.id.txtTongbill);
         BtnName = (Button) findViewById(R.id.button6);
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
         }
+        if (getIntent().getStringExtra("QR") != null)
+        {
+            QRCode = getIntent().getStringExtra("QR");
+            String[] output = QRCode.split("-");
+            //scanResults.setText(QRCode);
+            scanResults_ID.setText(output[0]);
+            scanResults_Date.setText(output[1]);
+            scanResults_BillAmount.setText(output[2]);
+            TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
+            txtTongbill5.setText(output[2]);
+        }
         final String IDUser = getIntent().getStringExtra("IDUser");
         final String IDBill = getIntent().getStringExtra("IDBill");
         final String date = getIntent().getStringExtra("date");
         final String billAmount = getIntent().getStringExtra("billAmount");
-        TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
-        txtMabill.setText(IDBill);
-        TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
-        txtTongbill.setText(billAmount);
-        TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
-        txtNgayinbill.setText(date);
-        TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
-        txtTongbill5.setText(billAmount);
+//        TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
+//        txtMabill.setText(IDBill);
+//        TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
+//        txtTongbill.setText(billAmount);
+//        TextView txtNgayinbill = (TextView) findViewById(R.id.txtNgayinbill);
+//        txtNgayinbill.setText(date);
+//        TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
+//        txtTongbill5.setText(billAmount);
         useVoucherBtn = (Button) findViewById(R.id.useVoucherBtn);
         useVoucherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +83,7 @@ public class Bill_n_voucher extends AppCompatActivity {
                 TextView voucher = (TextView) findViewById(R.id.txtTongbill2);
                 TextView giamgia = (TextView) findViewById(R.id.txtTongbill3);
                 TextView thanhtoan = (TextView) findViewById(R.id.txtTongbill5);
-                int point = (Integer.parseInt(tongcong.getText().toString()))%10000;
+                int point = Integer.parseInt(tongcong.getText().toString())%10000;
                 String Point = String.valueOf(point);
                 mdata = FirebaseDatabase.getInstance().getReference();
                 mdata.child("unpaidbill").child("billid").setValue(mahoadon.getText().toString());
