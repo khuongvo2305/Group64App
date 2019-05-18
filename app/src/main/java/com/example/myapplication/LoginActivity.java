@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void updateUI(){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-        Toast.makeText(LoginActivity.this,""+currentFirebaseUser.getDisplayName(),Toast.LENGTH_LONG).show();
+        Toast.makeText(LoginActivity.this,"Hello "+currentFirebaseUser.getDisplayName()+"!",Toast.LENGTH_LONG).show();
         Intent accountIntent = new Intent(LoginActivity.this, MainActivity.class);
         accountIntent.putExtra("IDUser",currentFirebaseUser.getUid());
         accountIntent.putExtra("fbName",currentFirebaseUser.getDisplayName());

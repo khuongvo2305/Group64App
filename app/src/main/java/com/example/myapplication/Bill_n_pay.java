@@ -15,11 +15,15 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Bill_n_pay extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
+    String fbName;
     private DatabaseReference mdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_n_pay);
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+        }
         Intent intent = getIntent();
         final String IDUser = getIntent().getStringExtra("IDUser");
         final String BillId = getIntent().getStringExtra("IDBill");
@@ -85,6 +89,7 @@ public class Bill_n_pay extends AppCompatActivity {
                 voucher_intent.putExtra("billAmount",BillAmount);
                 voucher_intent.putExtra("date", date);
                 voucher_intent.putExtra("IDBill", BillId);
+                voucher_intent.putExtra("fbName",fbName);
                 startActivity(voucher_intent);
             }
         });
@@ -93,6 +98,7 @@ public class Bill_n_pay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, account_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -101,6 +107,7 @@ public class Bill_n_pay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, MainActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -109,6 +116,7 @@ public class Bill_n_pay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, Map_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -117,6 +125,7 @@ public class Bill_n_pay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });

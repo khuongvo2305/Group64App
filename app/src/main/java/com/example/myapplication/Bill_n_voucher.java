@@ -15,11 +15,18 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Bill_n_voucher extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
     private DatabaseReference mdata;
+    String fbName;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
+    Button BtnName;
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
+        BtnName = (Button) findViewById(R.id.button6);
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+            BtnName.setText(fbName);
+        }
         final String IDUser = getIntent().getStringExtra("IDUser");
         final String IDBill = getIntent().getStringExtra("IDBill");
         final String date = getIntent().getStringExtra("date");
@@ -42,6 +49,7 @@ public class Bill_n_voucher extends AppCompatActivity {
                 intentPay.putExtra("billAmount", billAmount);
                 intentPay.putExtra("date", date);
                 intentPay.putExtra("IDBill", IDBill);
+                intentPay.putExtra("fbName",fbName);
                 startActivity(intentPay);
             }
         });
@@ -75,6 +83,7 @@ public class Bill_n_voucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_voucher.this, account_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -83,6 +92,7 @@ public class Bill_n_voucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_voucher.this, MainActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -91,6 +101,7 @@ public class Bill_n_voucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_voucher.this, Map_Activity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
@@ -99,6 +110,7 @@ public class Bill_n_voucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_voucher.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });

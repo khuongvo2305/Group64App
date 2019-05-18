@@ -163,6 +163,7 @@ public class ScanActivity extends AppCompatActivity {
                         billIntent.putExtra("billAmount", output[2]);
                         billIntent.putExtra("date",output[1]);
                         billIntent.putExtra("IDUser",IDUser);
+                        billIntent.putExtra("fbName",fbName);
                         startActivity(billIntent);
                         //Required only if you need to extract the type of barcode
                         int type = barcodes.valueAt(index).valueFormat;

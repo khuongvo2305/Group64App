@@ -23,7 +23,6 @@ public class DatHang_Activity extends AppCompatActivity {
         {
             IDUser = getIntent().getStringExtra("IDUser");
         }
-        Toast.makeText(DatHang_Activity.this,""+fbName,Toast.LENGTH_LONG).show();
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override

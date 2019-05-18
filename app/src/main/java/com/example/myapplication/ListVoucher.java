@@ -53,10 +53,8 @@ public class ListVoucher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_voucher);
-        BtnName = (Button) findViewById(R.id.button6) ;
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
-            BtnName.setText(fbName);
         }
         if (getIntent().getStringExtra("IDUser") != null)
         {
