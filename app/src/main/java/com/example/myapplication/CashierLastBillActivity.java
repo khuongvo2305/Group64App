@@ -295,6 +295,14 @@ public class CashierLastBillActivity extends AppCompatActivity {
                         mData.child("customer").child(upbcustomerid).child("voucher").child(upbvoucherid).removeValue();
 
                         //Xóa unpaidbill
+                        mData.child("unpaidbill").child("billamount").setValue("0");
+                        mData.child("unpaidbill").child("billid").setValue("NULL");
+                        mData.child("unpaidbill").child("billtotal").setValue("0");
+                        mData.child("unpaidbill").child("customerid").setValue("NULL");
+                        mData.child("unpaidbill").child("date").setValue("0");
+                        mData.child("unpaidbill").child("point").setValue("0");
+                        mData.child("unpaidbill").child("state").setValue("0");
+                        mData.child("unpaidbill").child("voucherid").setValue("NULL");
 
                         Toast.makeText(getApplicationContext() , "hahaha", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(CashierLastBillActivity.this, CashierNewBillActivity.class);

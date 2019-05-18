@@ -279,6 +279,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="1.0" />
+
     <Button
         android:id="@+id/buttonHuyDonHang"
         android:layout_width="wrap_content"
@@ -289,8 +290,10 @@
         android:layout_marginRight="8dp"
         android:text="Huỷ"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
         app:layout_constraintStart_toEndOf="@+id/buttonDaThanhToan"
         app:layout_constraintTop_toBottomOf="@+id/buttonDaThanhToan" />
+
     <Button
         android:id="@+id/buttonQuayLai"
         android:layout_width="wrap_content"
@@ -301,13 +304,14 @@
         android:layout_marginRight="8dp"
         android:text="Quay Lại"
         app:layout_constraintEnd_toStartOf="@+id/buttonDaThanhToan"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonDaThanhToan" />
 
     <ImageView
         android:id="@+id/imageQR"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
