@@ -26,6 +26,11 @@ import android.widget.Toast;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -34,6 +39,7 @@ import java.io.FileNotFoundException;
 public class ScanActivity extends AppCompatActivity {
     private static final String LOG_TAG = "Barcode Scanner API";
     private static final int PHOTO_REQUEST = 10;
+    private DatabaseReference mdata;
     private TextView scanResults;
     private TextView scanResults_ID;
     private TextView scanResults_Date;
@@ -44,7 +50,7 @@ public class ScanActivity extends AppCompatActivity {
     private static final String SAVED_INSTANCE_URI = "uri";
     private static final String SAVED_INSTANCE_RESULT = "result";
     ImageButton BtnAccount, BtnHome, BtnOrder, BtnMap;
-    Button BtnName;
+    Button BtnName,rank;
     String IDUser, fbName;
 
     protected void onCreate(Bundle icicle) {
@@ -58,6 +64,18 @@ public class ScanActivity extends AppCompatActivity {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
         }
+        mdata = FirebaseDatabase.getInstance().getReference();
+        mdata.child("customer").child(IDUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                rank = (Button) findViewById(R.id.button7);
+                rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         Button btnquet = (Button) findViewById(R.id.btnquet);
         scanResults = (TextView) findViewById(R.id.scan_results);
         scanResults_ID = (TextView) findViewById(R.id.txtMabill);
