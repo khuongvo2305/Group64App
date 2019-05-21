@@ -22,12 +22,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity {
     private CallbackManager mCallbackManager;
     private ImageButton mFacebookBtn;
+    private DatabaseReference mData;
     private static final String TAG = "FACELOG";
     private FirebaseAuth mAuth;
     @Override
@@ -76,14 +82,42 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     private void updateUI(){
-        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        final FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         Toast.makeText(LoginActivity.this,"Hello "+currentFirebaseUser.getDisplayName()+"!",Toast.LENGTH_LONG).show();
         Intent accountIntent = new Intent(LoginActivity.this, MainActivity.class);
         accountIntent.putExtra("IDUser",currentFirebaseUser.getUid());
         accountIntent.putExtra("fbName",currentFirebaseUser.getDisplayName());
+        mData = FirebaseDatabase.getInstance().getReference();
+        mData.child("customer").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data: dataSnapshot.getChildren()){
+                    if (data.child(currentFirebaseUser.getUid()).exists()) {
+                        //do ur stuff
+                    } else {
+                        //do something if not exists
+                        mData.child("customer").child(currentFirebaseUser.getUid()).child("ID").setValue(currentFirebaseUser.getUid());
+                        mData.child("customer").child(currentFirebaseUser.getUid()).child("name").setValue(currentFirebaseUser.getDisplayName());
+                        mData.child("customer").child(currentFirebaseUser.getUid()).child("rank").setValue("MỚI");
+                        mData.child("customer").child(currentFirebaseUser.getUid()).child("point").setValue("0");
+                        mData.child("customer").child(currentFirebaseUser.getUid()).child("address").setValue("");
+                        mData.child("customer").child(currentFirebaseUser.getUid()).child("phone").setValue("");
+                        mData.child("customer").child(currentFirebaseUser.getUid()).child("birthday").setValue("");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
         startActivity(accountIntent);
         finish();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

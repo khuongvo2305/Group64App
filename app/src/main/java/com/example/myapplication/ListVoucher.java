@@ -77,9 +77,11 @@ public class ListVoucher extends AppCompatActivity {
                 mdata.child("customer").child(ID).child("voucher").child(string).child("voucher").child("detail").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String detail = dataSnapshot.getValue().toString();
-                        arraydetail.add(detail);
-                        adapter1.notifyDataSetChanged();
+                        if(dataSnapshot.exists()) {
+                            String detail = dataSnapshot.getValue().toString();
+                            arraydetail.add(detail);
+                            adapter1.notifyDataSetChanged();
+                        }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -88,8 +90,10 @@ public class ListVoucher extends AppCompatActivity {
                 mdata.child("customer").child(ID).child("voucher").child(string).child("voucher").child("value").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String value = dataSnapshot.getValue().toString();
-                        arrayValue.add(value);
+                        if(dataSnapshot.exists()) {
+                            String value = dataSnapshot.getValue().toString();
+                            arrayValue.add(value);
+                        }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -98,8 +102,11 @@ public class ListVoucher extends AppCompatActivity {
                 mdata.child("customer").child(ID).child("voucher").child(string).child("voucher").child("percen").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String person = dataSnapshot.getValue().toString();
-                        arrayPercen.add(person);
+                        if(dataSnapshot.exists()) {
+
+                            String person = dataSnapshot.getValue().toString();
+                            arrayPercen.add(person);
+                        }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -142,6 +149,7 @@ public class ListVoucher extends AppCompatActivity {
                 intent.putExtra("IDBill",BillId);
                 intent.putExtra("date", date);
                 intent.putExtra("billAmount", BillAmount);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });

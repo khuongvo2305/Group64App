@@ -14,7 +14,8 @@ public class Lichsuchitiet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lichsuchitiet);
         Intent intent = getIntent();
-        final String ID = getIntent().getStringExtra("ID");
+        final String ID = getIntent().getStringExtra("IDUser");
+        final String fbName = getIntent().getStringExtra("fbName");
         final String billid = getIntent().getStringExtra("billid");
         final String billdate = getIntent().getStringExtra("billdate");
         final String billamount = getIntent().getStringExtra("billamount");
@@ -41,7 +42,8 @@ public class Lichsuchitiet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Lichsuchitiet.this, LichSuGiaoDich.class);
-                intent.putExtra("ID", ID);
+                intent.putExtra("IDUser", ID);
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });

@@ -11,17 +11,14 @@ import java.util.Date;
 
 public class LienHe extends AppCompatActivity {
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
-    Button BtnName;
     String fbName,IDUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lien_he);
-        BtnName = (Button) findViewById(R.id.button6) ;
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
-            BtnName.setText(fbName);
-        }
+            }
         if (getIntent().getStringExtra("IDUser") != null)
         {
             IDUser = getIntent().getStringExtra("IDUser");

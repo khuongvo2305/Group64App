@@ -38,9 +38,9 @@ public class Bill_n_pay extends AppCompatActivity {
         float percentage = Float.parseFloat(Percen);
         float value = Float.parseFloat(Value);
         float billAmount = Float.parseFloat(BillAmount);
-        giamgia = (int) (value + percentage*billAmount);
+        giamgia = (int) (value + (1-percentage)*billAmount);
+        if (giamgia >= billAmount) giamgia = (int) billAmount;
         String GiamGiaview = String.valueOf(giamgia);
-
         thanhtoan = (int)(billAmount - giamgia);
         String Thanhtoanview =String.valueOf(thanhtoan);
         TextView valueView = (TextView) findViewById(R.id.txtMabill);
@@ -66,7 +66,7 @@ public class Bill_n_pay extends AppCompatActivity {
                 TextView voucher = (TextView) findViewById(R.id.txtTongbill2);
                 TextView giamgia = (TextView) findViewById(R.id.txtTongbill3);
                 TextView thanhtoan = (TextView) findViewById(R.id.txtTongbill5);
-                Float point = Float.parseFloat(tongcong.getText().toString())/10000;
+                Integer point = Integer.parseInt(thanhtoan.getText().toString())/10000;
                 String Point = String.valueOf(point);
                 mdata = FirebaseDatabase.getInstance().getReference();
                 mdata.child("unpaidbill").child("billid").setValue(mahoadon.getText().toString());
@@ -75,8 +75,10 @@ public class Bill_n_pay extends AppCompatActivity {
                 mdata.child("unpaidbill").child("customerid").setValue(IDUser);
                 mdata.child("unpaidbill").child("date").setValue(ngay.getText().toString());
                 mdata.child("unpaidbill").child("point").setValue(Point);
-                mdata.child("unpaidbill").child("state").setValue("1");
+                mdata.child("unpaidbill").child("state").setValue("0");
                 mdata.child("unpaidbill").child("voucherid").setValue(IDVoucher);
+                xacnhan_intent.putExtra("IDUser",IDUser);
+                xacnhan_intent.putExtra("fbName",fbName);
                 startActivity(xacnhan_intent);
             }
         });

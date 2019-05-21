@@ -2,20 +2,28 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class account_Activity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     String IDUser,fbName;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnLienhe,BtnAvartar,BtnIconStar;
-    Button BtnThongtin, BtnLichSugiaodich, BtnDieuKhoan,BtnGuiPhanHoi,BtnCatdat, BtnDangXuat,BtnName,BtnRank,BtnPoint;
+    private DatabaseReference mdata;
+    Button BtnThongtin, BtnLichSugiaodich, BtnDieuKhoan,BtnGuiPhanHoi,BtnCatdat, BtnDangXuat,BtnName,BtnRank,BtnPoint,rank;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +38,18 @@ public class account_Activity extends AppCompatActivity {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
         }
+        mdata = FirebaseDatabase.getInstance().getReference();
+        mdata.child("customer").child(IDUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                rank = (Button) findViewById(R.id.button7);
+                rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
         BtnLienhe.setOnClickListener(new View.OnClickListener() {
             @Override

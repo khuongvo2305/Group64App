@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">#64</string>
     <string name="account_name"></string>
-    <string name="rank">Thành viên vàng</string>
-    <string name="diem">64</string>
-    <string name="diemthanghang">100</string>
-    <string name="soluongvoucher">9</string>
+    <string name="rank"></string>
+    <string name="diem"></string>
+    <string name="diemthanghang"></string>
+    <string name="soluongvoucher"></string>
     <drawable name="avartar">@mipmap/ic_launcher</drawable>
     <drawable name="uudaithanhvien">@drawable/thanhvienvang</drawable>
     <drawable name="tichdiem">@drawable/tichdiem2</drawable>

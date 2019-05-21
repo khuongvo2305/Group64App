@@ -164,13 +164,14 @@ public class LichSuGiaoDich extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(LichSuGiaoDich.this, Lichsuchitiet.class);
-                intent.putExtra("ID", ID);
+                intent.putExtra("IDUser", ID);
                 intent.putExtra("billid", arraybillid.get(position));
                 intent.putExtra("billdate", arraybilldate.get(position));
                 intent.putExtra("billamount", arraybillamount.get(position));
                 intent.putExtra("billtotal", arraybilltotal.get(position));
                 intent.putExtra("point",arraybillpoint.get(position));
                 intent.putExtra("billvoucherid", arraybillVoucherID.get(position));
+                intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }
         });
