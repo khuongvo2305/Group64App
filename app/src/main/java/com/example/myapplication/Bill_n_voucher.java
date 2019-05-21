@@ -48,9 +48,9 @@ public class Bill_n_voucher extends AppCompatActivity {
             txtTongbill5.setText(output[2]);
         }
         final String IDUser = getIntent().getStringExtra("IDUser");
-        final String IDBill = getIntent().getStringExtra("IDBill");
-        final String date = getIntent().getStringExtra("date");
-        final String billAmount = getIntent().getStringExtra("billAmount");
+        final String IDBill = (String) scanResults_ID.getText();
+        final String date = (String) scanResults_Date.getText();
+        final String billAmount = (String) scanResults_BillAmount.getText();
 //        TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
 //        txtMabill.setText(IDBill);
 //        TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
@@ -83,7 +83,7 @@ public class Bill_n_voucher extends AppCompatActivity {
                 TextView voucher = (TextView) findViewById(R.id.txtTongbill2);
                 TextView giamgia = (TextView) findViewById(R.id.txtTongbill3);
                 TextView thanhtoan = (TextView) findViewById(R.id.txtTongbill5);
-                int point = Integer.parseInt(tongcong.getText().toString())%10000;
+                int point = Integer.parseInt(tongcong.getText().toString())/10000;
                 String Point = String.valueOf(point);
                 mdata = FirebaseDatabase.getInstance().getReference();
                 mdata.child("unpaidbill").child("billid").setValue(mahoadon.getText().toString());
@@ -94,6 +94,8 @@ public class Bill_n_voucher extends AppCompatActivity {
                 mdata.child("unpaidbill").child("point").setValue(Point);
                 mdata.child("unpaidbill").child("state").setValue("0");
                 mdata.child("unpaidbill").child("voucherid").setValue("null");
+                xacnhan_intent.putExtra("IDUser",IDUser);
+                xacnhan_intent.putExtra("fbName",fbName);
                 startActivity(xacnhan_intent);
             }
         });
