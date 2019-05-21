@@ -94,7 +94,7 @@ public class BillQRActivity extends AppCompatActivity {
         final String ID = IDrandom;
         //String billAmount = edtSoTien.getText().toString();
         String dateString = date;
-        String QRtext = ID + "-" + dateString + "-" + billAmount;
+        String QRtext = ID + "-" + dateString + "-" + billAmount + "-";
 
         final TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
         txtMabill.setText(ID);
