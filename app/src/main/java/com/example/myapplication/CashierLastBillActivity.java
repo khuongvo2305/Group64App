@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class CashierLastBillActivity extends AppCompatActivity {
     private static final int MAX_LENGTH = 8;
-    ImageButton BtnAccount, BtnHome, BtnOrder, BtnMap;
+    ImageButton BtnHome;
     private String json;
     //Biến sử lý unpaid-bill
     private String upbstate;
@@ -327,41 +327,5 @@ public class CashierLastBillActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-//
-        BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
-        BtnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CashierLastBillActivity.this, account_Activity.class);
-                startActivity(intent);
-            }
-        });
-
-        BtnHome = (ImageButton) findViewById(R.id.imageButton18) ;
-        BtnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CashierLastBillActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-        BtnOrder = (ImageButton) findViewById(R.id.imageButton21) ;
-        BtnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CashierLastBillActivity.this, DatHang_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnMap = (ImageButton) findViewById(R.id.imageButton20) ;
-        BtnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CashierLastBillActivity.this, Map_Activity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 }

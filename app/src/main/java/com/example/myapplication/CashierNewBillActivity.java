@@ -56,39 +56,5 @@ public class CashierNewBillActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
-        BtnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CashierNewBillActivity.this, account_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnHome = (ImageButton) findViewById(R.id.imageButton18) ;
-        BtnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CashierNewBillActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-        BtnOrder = (ImageButton) findViewById(R.id.imageButton21) ;
-        BtnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CashierNewBillActivity.this, DatHang_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnMap = (ImageButton) findViewById(R.id.imageButton20) ;
-        BtnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CashierNewBillActivity.this, Map_Activity.class);
-                startActivity(intent);
-            }
-        });
-
-    }
+       }
 }

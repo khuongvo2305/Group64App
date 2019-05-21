@@ -119,13 +119,6 @@ public class BillQRActivity extends AppCompatActivity {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-//        btntaobill.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(BillQRActivity.this, BillQRActivity.class);
-//                startActivity(intent);
-//            }
-//        });
         Button BtnDTT = (Button) findViewById(R.id.buttonDaThanhToan) ;
 
         BtnDTT.setOnClickListener(new View.OnClickListener() {
@@ -168,39 +161,7 @@ public class BillQRActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
-        BtnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BillQRActivity.this, account_Activity.class);
-                startActivity(intent);
-            }
-        });
 
-        BtnHome = (ImageButton) findViewById(R.id.imageButton18) ;
-        BtnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BillQRActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-        BtnOrder = (ImageButton) findViewById(R.id.imageButton21) ;
-        BtnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BillQRActivity.this, DatHang_Activity.class);
-                startActivity(intent);
-            }
-        });
-        BtnMap = (ImageButton) findViewById(R.id.imageButton20) ;
-        BtnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BillQRActivity.this, Map_Activity.class);
-                startActivity(intent);
-            }
-        });
         mData = FirebaseDatabase.getInstance().getReference();
         mData.child("unpaidbill").child("billid").addValueEventListener(new ValueEventListener() {
             @Override
@@ -216,39 +177,5 @@ public class BillQRActivity extends AppCompatActivity {
 
             }
         });
-//        mData.child("unpaidbill").addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-////                if (dataSnapshot.child("billid").getValue().toString().equals(ID))
-////                {
-////                    Intent intent = new Intent(BillQRActivity.this, CashierLastBillActivity.class);
-////                    startActivity(intent);
-////                }
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                if (dataSnapshot.child("billid").getValue().toString().equals(ID))
-//                {
-//                    Intent intent = new Intent(BillQRActivity.this, CashierLastBillActivity.class);
-//                    startActivity(intent);
-//                }
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 }

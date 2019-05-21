@@ -21,4 +21,3 @@ public class bill {
         this.voucherid = voucherid;
     }
 }
-
