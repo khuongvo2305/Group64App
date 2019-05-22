@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 enum Rank {
     DIAMOND, GOLD, NEW;
@@ -26,6 +29,25 @@ enum VoucherType {
 }
 
 public class MainActivity extends AppCompatActivity {
+    ListView lvTintuc;
+    ArrayList<TinTuc> arrayTinTuc;
+    ArrayList arrayLink;
+    TinTucAdapter adapter;
+
+    private void AnhXaLink() {
+        arrayLink = new ArrayList<>();
+
+        arrayLink.add(0, new link("https://the64coffee.blogspot.com/2019/05/giai-nhiet-mua-he-cung-64-coffee-sale.html"));
+        arrayLink.add(1, new link("https://the64coffee.blogspot.com/2019/05/64-coffee-sale-10-cho-hoc-sinh-sinh-vien.html"));
+    }
+
+    private void AnhXa() {
+        lvTintuc = (ListView) findViewById(R.id.listviewTintuc);
+        arrayTinTuc = new ArrayList<>();
+
+        arrayTinTuc.add(new TinTuc("Giảm 30% mọi loại kem tại quán!", "", R.drawable.hinh1));
+        arrayTinTuc.add(new TinTuc("Giảm 10% cho học sinh sinh viên!", "", R.drawable.hinh2));
+    }
     private String json;
     private DatabaseReference mdata;
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
@@ -56,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        AnhXa();
+        AnhXaLink();
+
+        adapter = new TinTucAdapter(this, R.layout.tin_tuc, arrayTinTuc);
+        lvTintuc.setAdapter(adapter);
+
+        lvTintuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                link link = (com.example.myapplication.link) arrayLink.get(position);
+
+                Intent intent = new Intent(MainActivity.this, web.class);
+                intent.putExtra("link", String.valueOf(link.getLink()));
+                startActivity(intent);
+            }
+        });
+
         BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
         BtnLienhe.setOnClickListener(new View.OnClickListener() {
             @Override

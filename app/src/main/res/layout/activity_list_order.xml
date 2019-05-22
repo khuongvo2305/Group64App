@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud"
-    tools:context=".DatHang_Activity">
+
+    tools:context=".listOrder">
 
     <TextView
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="100dp"
-        android:text="MENU"
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="96dp"
+        android:text="GIỎ HÀNG"
         android:textColor="#006241"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -170,61 +170,63 @@
         app:srcCompat="@drawable/dathang_home" />
 
     <GridView
-        android:id="@+id/viewmenu"
-        android:layout_width="406dp"
-        android:layout_height="372dp"
-        android:layout_marginTop="140dp"
-        android:horizontalSpacing="10dp"
-        android:numColumns="2"
+        android:id="@+id/viewOrder"
+        android:layout_width="405dp"
+        android:layout_height="309dp"
+        android:layout_marginTop="12dp"
         android:verticalSpacing="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="475dp"
-        android:layout_height="29dp"
-        android:text="______________________________________________________________"
+    <Button
+        android:id="@+id/thaydoiOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="80dp"
+        android:text="Thay đổi"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewmenu" />
+        app:layout_constraintTop_toBottomOf="@+id/viewOrder" />
+
+    <Button
+        android:id="@+id/xacnhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="80dp"
+        android:text="Xác nhận"
+        app:layout_constraintStart_toEndOf="@+id/thaydoiOrder"
+        app:layout_constraintTop_toBottomOf="@+id/viewOrder" />
 
     <TextView
         android:id="@+id/textView36"
-        android:layout_width="79dp"
-        android:layout_height="46dp"
+        android:layout_width="86dp"
+        android:layout_height="41dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="476dp"
         android:text="Tổng:"
         android:textColor="#006241"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tonggiohang"
-        android:layout_width="218dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="211dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="481dp"
         android:text="0"
         android:textColor="#F9F400"
         android:textSize="27dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView36"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/listorder"
-        android:layout_width="52dp"
-        android:layout_height="34dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25"
-        app:srcCompat="@drawable/thanhtoan" />
 
 </android.support.constraint.ConstraintLayout>

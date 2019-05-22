@@ -7,6 +7,18 @@
     android:background="@drawable/backgroud"
     tools:context=".MainActivity">
 
+    <ListView
+        android:id="@+id/listviewTintuc"
+        android:layout_width="382dp"
+        android:layout_height="492dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/button8"
         android:layout_width="18dp"
@@ -19,17 +31,6 @@
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button6" />
-    <ImageButton
-        android:id="@+id/imageButton8"
-        android:layout_width="40dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginLeft="116dp"
-        android:background="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
-        app:srcCompat="@drawable/next" />
 
     <Button
         android:id="@+id/button6"
