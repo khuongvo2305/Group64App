@@ -15,12 +15,16 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Bill_n_pay extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
-    String fbName;
+    String fbName,IDUser;
     private DatabaseReference mdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_n_pay);
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
         }
@@ -101,6 +105,7 @@ public class Bill_n_pay extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, account_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -110,6 +115,7 @@ public class Bill_n_pay extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, MainActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -119,6 +125,7 @@ public class Bill_n_pay extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, Map_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -128,6 +135,7 @@ public class Bill_n_pay extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, ScanActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });

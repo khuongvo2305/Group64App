@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,11 +14,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class DatHang_Activity extends AppCompatActivity {
     ImageButton BtnAccount, BtnHome, BtnMap, BtnStore, cong, tru;
-    Button xacnhanDialog, huydialog;
+    Button xacnhanDialog, huydialog,BtnName,rank;
     ImageView hinhsp,Btngiohang;
     TextView tensp, editsoluongsp, thanhtien, txttongtien;
     GridView gridViewmenu;
@@ -26,6 +33,8 @@ public class DatHang_Activity extends AppCompatActivity {
     ArrayList<Menu> arrayMenu;
     ArrayList<ViewOrder> OrderArrayList;
     MenuAdapter adapter;
+    String fbName,IDUser;
+    private DatabaseReference mdata;
     public void Dialogmenu(final int position){
         final Dialog dialog = new Dialog(DatHang_Activity.this);
         dialog.setContentView(R.layout.dialog_menu);
@@ -105,6 +114,27 @@ public class DatHang_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dathang);
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
+        BtnName = (Button) findViewById(R.id.button6) ;
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+            BtnName.setText(fbName);
+        }
+        mdata = FirebaseDatabase.getInstance().getReference();
+        mdata.child("customer").child(IDUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                rank = (Button) findViewById(R.id.button7);
+                rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         anhxamenu();
         adapter = new MenuAdapter(this, R.layout.dong_menu, arrayMenu);
         gridViewmenu.setAdapter(adapter);
@@ -135,6 +165,8 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, account_Activity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -143,6 +175,8 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, MainActivity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -151,6 +185,8 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, Map_Activity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -159,6 +195,8 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });

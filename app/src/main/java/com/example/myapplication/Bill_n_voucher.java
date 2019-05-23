@@ -19,7 +19,7 @@ public class Bill_n_voucher extends AppCompatActivity {
     private TextView scanResults_ID;
     private TextView scanResults_Date;
     private TextView scanResults_BillAmount;
-    String fbName, QRCode;
+    String fbName, QRCode,IDUser;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     Button BtnName;
         @Override
@@ -31,11 +31,15 @@ public class Bill_n_voucher extends AppCompatActivity {
             scanResults_ID = (TextView) findViewById(R.id.txtMabill);
             scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);
             scanResults_BillAmount = (TextView) findViewById(R.id.txtTongbill);
-        BtnName = (Button) findViewById(R.id.button6);
-        if (getIntent().getStringExtra("fbName") != null) {
-            fbName = getIntent().getStringExtra("fbName");
-            BtnName.setText(fbName);
-        }
+            if (getIntent().getStringExtra("IDUser") != null)
+            {
+                IDUser = getIntent().getStringExtra("IDUser");
+            }
+            BtnName = (Button) findViewById(R.id.button6) ;
+            if (getIntent().getStringExtra("fbName") != null) {
+                fbName = getIntent().getStringExtra("fbName");
+                BtnName.setText(fbName);
+            }
         if (getIntent().getStringExtra("QR") != null)
         {
             QRCode = getIntent().getStringExtra("QR");
@@ -105,6 +109,7 @@ public class Bill_n_voucher extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_voucher.this, account_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -114,6 +119,7 @@ public class Bill_n_voucher extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_voucher.this, MainActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -123,6 +129,7 @@ public class Bill_n_voucher extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_voucher.this, Map_Activity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -132,6 +139,7 @@ public class Bill_n_voucher extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_voucher.this, ScanActivity.class);
                 intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });

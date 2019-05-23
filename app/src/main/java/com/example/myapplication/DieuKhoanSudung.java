@@ -20,8 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class DieuKhoanSudung extends AppCompatActivity {
-    Button Quaylai;
+    Button Quaylai,BtnName;
     private  DatabaseReference mdata;
+    String IDUser,fbName;
     private  ListView listView;
     private  ArrayList<String> arraydetail = new ArrayList<>();
     private  ArrayList<String> arrayListID = new ArrayList<>();
@@ -33,6 +34,13 @@ public class DieuKhoanSudung extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dieu_khoan_sudung);
         Intent intent = getIntent();
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+        }
         final String ID = intent.getStringExtra("IDUser");
         adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arraydetail);
         mdata= FirebaseDatabase.getInstance().getReference();
@@ -82,6 +90,8 @@ public class DieuKhoanSudung extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DieuKhoanSudung.this, account_Activity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
