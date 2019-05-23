@@ -36,7 +36,7 @@ public class Thongtin_account extends AppCompatActivity {
         Intent intent = getIntent();
         final String ID = intent.getStringExtra("IDUser");
         mdata =FirebaseDatabase.getInstance().getReference();
-        mdata.child("customer").child(ID).child("name").addValueEventListener(new ValueEventListener() {
+        mdata.child("customer").child(IDUser).child("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 hoten = (TextView) findViewById(R.id.textView33);

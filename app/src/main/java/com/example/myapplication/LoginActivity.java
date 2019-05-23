@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot data: dataSnapshot.getChildren()){
-                    if (data.child(currentFirebaseUser.getUid()).exists()) {
+                    if (data.child(currentFirebaseUser.getUid()) != null) {
                         //do ur stuff
                     } else {
                         //do something if not exists
