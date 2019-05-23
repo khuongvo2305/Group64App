@@ -18,6 +18,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".BillQRActivity" />
         <activity android:name=".CashierLastBillActivity" />
+        <activity android:name=".ListVoucher"/>
+        <activity android:name=".CashierLastBillActivity2" />
+
         <activity android:name=".CashierNewBillActivity" />
 
         <activity android:name=".LoginActivity">

@@ -166,12 +166,13 @@ public class BillQRActivity extends AppCompatActivity {
         mData.child("unpaidbill").child("billid").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue().toString().equals(ID)){
-                    Intent intent = new Intent(BillQRActivity.this, CashierLastBillActivity.class);
-                    startActivity(intent);
+                if (dataSnapshot.exists()) {
+                    if (dataSnapshot.getValue().toString().equals(ID)) {
+                        Intent intent = new Intent(BillQRActivity.this, CashierLastBillActivity.class);
+                        startActivity(intent);
+                    }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

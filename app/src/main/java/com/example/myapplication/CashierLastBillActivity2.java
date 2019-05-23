@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
-public class CashierLastBillActivity extends AppCompatActivity {
+public class CashierLastBillActivity2 extends AppCompatActivity {
     private static final int MAX_LENGTH = 8;
     ImageButton BtnHome;
     private String json;
@@ -46,7 +46,7 @@ public class CashierLastBillActivity extends AppCompatActivity {
         setContentView(R.layout.cashier_finalbill);
         //Firebase
         mData = FirebaseDatabase.getInstance().getReference();
-        mData.addValueEventListener(new ValueEventListener() {
+        mData.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").addValueEventListener(new ValueEventListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -65,8 +65,7 @@ public class CashierLastBillActivity extends AppCompatActivity {
                     upbvoucherid = Objects.requireNonNull(dataSnapshot.child("unpaidbill").child("voucherid").getValue()).toString();
                     if(dataSnapshot.child("customer").child(upbcustomerid).child("point").exists()) {
                         oldpoint = Integer.parseInt(Objects.requireNonNull(dataSnapshot.child("customer").child(upbcustomerid).child("point").getValue()).toString());
-                    }
-                    name = Objects.requireNonNull(dataSnapshot.child("customer").child(upbcustomerid).child("name").getValue()).toString();
+                    }                    name = Objects.requireNonNull(dataSnapshot.child("customer").child(upbcustomerid).child("name").getValue()).toString();
                     TextView txtMabill = (TextView) findViewById(R.id.txtMabill);
                     txtMabill.setText(upbid);
                     TextView txtTongbill = (TextView) findViewById(R.id.txtTongbill);
@@ -92,7 +91,7 @@ public class CashierLastBillActivity extends AppCompatActivity {
                             //Tạo mới bill trong history
                             bill newbill = new bill(upbamount, upbid, upbtotal, upbcustomerid, upbdate, upbpoint, upbstate, upbvoucherid);
                             mData.child("customer").child(upbcustomerid).child("history").child(upbid).setValue(newbill);
-                            Toast.makeText(CashierLastBillActivity.this, "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CashierLastBillActivity2.this, "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
 
                             //Sửa điểm
                             newpoint = Integer.parseInt(upbpoint) + oldpoint;
@@ -277,7 +276,7 @@ public class CashierLastBillActivity extends AppCompatActivity {
                             mData.child("unpaidbill").child("voucherid").setValue("NULL");
 
                             Toast.makeText(getApplicationContext(), "hahaha", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(CashierLastBillActivity.this, CashierNewBillActivity.class);
+                            Intent intent = new Intent(CashierLastBillActivity2.this, CashierNewBillActivity.class);
                             startActivity(intent);
 
                         }
@@ -297,7 +296,7 @@ public class CashierLastBillActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(CashierLastBillActivity.this, CashierNewBillActivity.class);
+                Intent intent = new Intent(CashierLastBillActivity2.this, CashierNewBillActivity.class);
                 startActivity(intent);
             }
         });
