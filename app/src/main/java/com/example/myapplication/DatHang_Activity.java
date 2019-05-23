@@ -156,7 +156,9 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), listOrder.class)
-                        .putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList));
+                        .putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList)
+                        .putExtra("fbName",fbName)
+                        .putExtra("IDUser",IDUser));
             }
         });
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;

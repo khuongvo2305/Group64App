@@ -18,5 +18,6 @@
     <string name="mavoucher"></string>
     <string name="tienvoucher"></string>
     <string name="thanhtoan"></string>
+    <string name="title_activity_map">Map</string>
 
 </resources>

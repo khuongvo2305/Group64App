@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -168,7 +169,10 @@ public class MainActivity extends AppCompatActivity {
         BtnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<ViewOrder> OrderArrayList = new ArrayList<>();
                 Intent intent = new Intent(MainActivity.this, DatHang_Activity.class);
+                intent.putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList);
+                intent.putExtra("Tong", "0");
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser",IDUser);
                 startActivity(intent);

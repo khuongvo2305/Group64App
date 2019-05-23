@@ -14,11 +14,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class listOrder extends AppCompatActivity {
-    Button xacnhan, thaydoi;
+    Button xacnhan, thaydoi,BtnName;
     GridView gridViewOrder;
     ArrayList<ViewOrder> arrayOrderView;
     viewOrderAdapter adapter;
     int Tong;
+    String fbName,IDUser;
     private void anhxa(){
         gridViewOrder= (GridView) findViewById( R.id.viewOrder);
         Intent intent = getIntent();
@@ -30,6 +31,15 @@ public class listOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_order);
+        BtnName = (Button) findViewById(R.id.button6) ;
+        if (getIntent().getStringExtra("fbName") != null) {
+            fbName = getIntent().getStringExtra("fbName");
+            BtnName.setText(fbName);
+        }
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
         final TextView TongGioHang = (TextView) findViewById(R.id.tonggiohang);
         anhxa();
         adapter = new viewOrderAdapter(this, R.layout.dongvieworder, arrayOrderView);
@@ -69,6 +79,8 @@ public class listOrder extends AppCompatActivity {
                 Intent intent = new Intent(listOrder.this, DatHang_Activity.class);
                 intent.putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) arrayOrderView);
                 intent.putExtra("Tong", String.valueOf(Tong));
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
               /*  startActivity(new Intent(getApplicationContext(), DatHang_Activity.class)
                         .putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) arrayOrderView));

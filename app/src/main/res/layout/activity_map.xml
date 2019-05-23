@@ -12,7 +12,7 @@
         android:layout_height="161dp"
         android:layout_marginStart="108dp"
         android:layout_marginLeft="108dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="32dp"
         android:text="Map"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -94,5 +94,12 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/dathang_home" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView2"
+        android:layout_width="205dp"
+        android:layout_height="190dp"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="299dp" />
 
 </android.support.constraint.ConstraintLayout>
