@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,22 +12,12 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class DatHang_Activity extends AppCompatActivity {
-    private DatabaseReference mdata;
-    Button BtnName;
-    String fbName,IDUser;
     ImageButton BtnAccount, BtnHome, BtnMap, BtnStore, cong, tru;
-    Button xacnhanDialog, huydialog,rank;
+    Button xacnhanDialog, huydialog;
     ImageView hinhsp,Btngiohang;
     TextView tensp, editsoluongsp, thanhtien, txttongtien;
     GridView gridViewmenu;
@@ -111,31 +100,11 @@ public class DatHang_Activity extends AppCompatActivity {
         arrayMenu.add(new Menu("Cà phê", "32000", R.drawable.caphe));
         arrayMenu.add(new Menu("Nước ép cam", "22000", R.drawable.nuocam));
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dathang);
-        BtnName = (Button) findViewById(R.id.button6) ;
-        if (getIntent().getStringExtra("fbName") != null) {
-            fbName = getIntent().getStringExtra("fbName");
-            BtnName.setText(fbName);
-        }
-        if (getIntent().getStringExtra("IDUser") != null)
-        {
-            IDUser = getIntent().getStringExtra("IDUser");
-        }
-        mdata = FirebaseDatabase.getInstance().getReference();
-        mdata.child("customer").child(IDUser).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                rank = (Button) findViewById(R.id.button7);
-                rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
         anhxamenu();
         adapter = new MenuAdapter(this, R.layout.dong_menu, arrayMenu);
         gridViewmenu.setAdapter(adapter);
@@ -147,25 +116,23 @@ public class DatHang_Activity extends AppCompatActivity {
         gridViewmenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Dialogmenu(position);
+               Dialogmenu(position);
             }
         });
 
         Btngiohang = (ImageView) findViewById(R.id.listorder) ;
         Btngiohang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), listOrder.class)
-                        .putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList));
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), listOrder.class)
+                            .putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList));
+                }
+            });
         BtnAccount = (ImageButton) findViewById(R.id.imageButton19) ;
         BtnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, account_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -174,8 +141,6 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, MainActivity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -184,8 +149,6 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, Map_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });
@@ -194,8 +157,6 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });

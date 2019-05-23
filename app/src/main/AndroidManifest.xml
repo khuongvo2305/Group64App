@@ -18,8 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThayDoiThongtin"></activity>
+        <activity android:name=".listOrder"></activity>
         <activity android:name=".Lichsuchitiet" />
+        <activity android:name=".ThayDoiThongtin" />
         <activity android:name=".Bill_n_pay" />
         <activity android:name=".LienHe" />
         <activity android:name=".ListVoucher" />
