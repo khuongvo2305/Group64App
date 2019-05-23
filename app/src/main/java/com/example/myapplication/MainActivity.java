@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -11,13 +10,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,36 +43,17 @@ public class MainActivity extends AppCompatActivity {
         arrayTinTuc.add(new TinTuc("Giảm 30% mọi loại kem tại quán!", "", R.drawable.hinh1));
         arrayTinTuc.add(new TinTuc("Giảm 10% cho học sinh sinh viên!", "", R.drawable.hinh2));
     }
+
+
     private String json;
-    private DatabaseReference mdata;
+    DatabaseReference mData;
     ImageButton BtnAccount, BtnStore, BtnOrder, BtnMap, BtnIconStar, BtnAvartar,BtnLienhe;
-    Button BtnName, BtnRank,BtnPoint,rank;
-    String IDUser,fbName;
+    Button BtnName, BtnRank,BtnPoint;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (getIntent().getStringExtra("IDUser") != null)
-        {
-            IDUser = getIntent().getStringExtra("IDUser");
-        }
-        BtnName = (Button) findViewById(R.id.button6) ;
-        if (getIntent().getStringExtra("fbName") != null) {
-            fbName = getIntent().getStringExtra("fbName");
-            BtnName.setText(fbName);
-        }
-        mdata = FirebaseDatabase.getInstance().getReference();
-        mdata.child("customer").child(IDUser).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                rank = (Button) findViewById(R.id.button7);
-                rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
         AnhXa();
         AnhXaLink();
 
@@ -95,14 +70,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
         BtnLienhe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LienHe.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
+                Intent intent = new Intent(MainActivity.this, Bill_n_voucher.class);
                 startActivity(intent);
             }
         });
@@ -110,9 +82,7 @@ public class MainActivity extends AppCompatActivity {
         BtnAvartar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
                 startActivity(intent);
             }
         });
@@ -120,18 +90,15 @@ public class MainActivity extends AppCompatActivity {
         BtnIconStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
                 startActivity(intent);
             }
         });
+        BtnName = (Button) findViewById(R.id.button6) ;
         BtnName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
                 startActivity(intent);
             }
         });
@@ -139,9 +106,7 @@ public class MainActivity extends AppCompatActivity {
         BtnRank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
                 startActivity(intent);
             }
         });
@@ -149,9 +114,7 @@ public class MainActivity extends AppCompatActivity {
         BtnPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TichDiem_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
                 startActivity(intent);
             }
         });
@@ -160,8 +123,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, account_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -183,8 +144,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Map_Activity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });
@@ -193,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ScanActivity.class);
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser",IDUser);
                 startActivity(intent);
             }
         });

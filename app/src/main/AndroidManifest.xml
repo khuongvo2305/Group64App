@@ -39,6 +39,7 @@
         <activity android:name=".listOrder"></activity>
         <activity android:name=".ThayDoiThongtin" />
         <activity android:name=".Lichsuchitiet" />
+        <activity android:name=".ThayDoiThongtin" />
         <activity android:name=".Bill_n_pay" />
         <activity android:name=".LienHe" />
         <activity android:name=".ListVoucher" />
