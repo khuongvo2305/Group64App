@@ -45,13 +45,11 @@ public class TinTucAdapter extends BaseAdapter {
         view = inflater.inflate(layout, null);
 
         TextView txtTen = (TextView) view.findViewById(R.id.textTen);
-        TextView txtMota = (TextView) view.findViewById(R.id.textMota);
         ImageView ingHinh = (ImageView) view.findViewById(R.id.imageHinh);
 
         TinTuc tinTuc = tinTucList.get(i);
 
         txtTen.setText(tinTuc.getTen());
-        txtMota.setText(tinTuc.getMota());
         ingHinh.setImageResource(tinTuc.getHinh());
 
         return view;

@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -28,6 +29,7 @@ enum VoucherType {
 }
 
 public class MainActivity extends AppCompatActivity {
+    WebView webView;
     ListView lvTintuc;
     ArrayList<TinTuc> arrayTinTuc;
     ArrayList arrayLink;
@@ -47,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         lvTintuc = (ListView) findViewById(R.id.listviewTintuc);
         arrayTinTuc = new ArrayList<>();
 
-        arrayTinTuc.add(new TinTuc("Giảm 30% mọi loại kem tại quán!", "", R.drawable.hinh1));
-        arrayTinTuc.add(new TinTuc("Giảm 10% cho học sinh sinh viên!", "", R.drawable.hinh2));
+        arrayTinTuc.add(new TinTuc("Giảm 30% mọi loại kem tại quán!", R.drawable.hinh1));
+        arrayTinTuc.add(new TinTuc("Giảm 10% cho học sinh sinh viên!", R.drawable.hinh2));
     }
 
 
@@ -91,12 +93,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 link link = (com.example.myapplication.link) arrayLink.get(position);
-
-                Intent intent = new Intent(MainActivity.this, web.class);
-                intent.putExtra("link", String.valueOf(link.getLink()));
-                intent.putExtra("fbName",fbName);
-                intent.putExtra("IDUser", IDUser);
-                startActivity(intent);
+                webView = (WebView) findViewById(R.id.webview);
+                webView.loadUrl(String.valueOf(link.getLink()));
+                //Intent intent = new Intent(MainActivity.this, web.class);
+                //intent.putExtra("link", String.valueOf(link.getLink()));
+                //intent.putExtra("fbName",fbName);
+                //intent.putExtra("IDUser", IDUser);
+                //startActivity(intent);
             }
         });
         BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
