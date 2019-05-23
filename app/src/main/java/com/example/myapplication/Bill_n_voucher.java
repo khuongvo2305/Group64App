@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +10,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Bill_n_voucher extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
@@ -21,12 +25,32 @@ public class Bill_n_voucher extends AppCompatActivity {
     private TextView scanResults_BillAmount;
     String fbName, QRCode,IDUser;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
-    Button BtnName;
+    Button BtnName,rank;
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill_pickvoucher);
+            if (getIntent().getStringExtra("IDUser") != null)
+            {
+                IDUser = getIntent().getStringExtra("IDUser");
+            }
+            BtnName = (Button) findViewById(R.id.button6) ;
+            if (getIntent().getStringExtra("fbName") != null) {
+                fbName = getIntent().getStringExtra("fbName");
+                BtnName.setText(fbName);
+            }
+            mdata = FirebaseDatabase.getInstance().getReference();
+            mdata.child("customer").child(IDUser).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    rank = (Button) findViewById(R.id.button7);
+                    rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                }
+            });
             scanResults = (TextView) findViewById(R.id.scan_results);
             scanResults_ID = (TextView) findViewById(R.id.txtMabill);
             scanResults_Date = (TextView) findViewById(R.id.txtNgayinbill);

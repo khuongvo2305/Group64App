@@ -9,12 +9,14 @@
 
     <TextView
         android:id="@+id/textView35"
-        android:layout_width="280dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginLeft="108dp"
+        android:layout_width="166dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -22,6 +24,8 @@
         android:id="@+id/textView34"
         android:layout_width="278dp"
         android:layout_height="58dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_marginStart="108dp"
         android:layout_marginLeft="108dp"
         android:text="TextView"
@@ -222,17 +226,20 @@
         android:layout_marginStart="108dp"
         android:layout_marginLeft="108dp"
         android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
         android:id="@+id/textView33"
-        android:layout_width="280dp"
-        android:layout_height="29dp"
+        android:layout_width="242dp"
+        android:layout_height="30dp"
         android:layout_marginStart="108dp"
         android:layout_marginLeft="108dp"
-        android:layout_marginTop="12dp"
         android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 </android.support.constraint.ConstraintLayout>
