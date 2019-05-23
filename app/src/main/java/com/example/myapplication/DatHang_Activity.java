@@ -114,6 +114,20 @@ public class DatHang_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dathang);
+        anhxamenu();
+        adapter = new MenuAdapter(this, R.layout.dong_menu, arrayMenu);
+        gridViewmenu.setAdapter(adapter);
+        Intent intent = getIntent();
+        OrderArrayList = intent.getParcelableArrayListExtra("order");
+        String Tong = intent.getStringExtra("Tong");
+        TextView test = (TextView) findViewById(R.id.tonggiohang);
+        test.setText(Tong);
+        gridViewmenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Dialogmenu(position);
+            }
+        });
         if (getIntent().getStringExtra("IDUser") != null)
         {
             IDUser = getIntent().getStringExtra("IDUser");
@@ -135,21 +149,6 @@ public class DatHang_Activity extends AppCompatActivity {
 
             }
         });
-        anhxamenu();
-        adapter = new MenuAdapter(this, R.layout.dong_menu, arrayMenu);
-        gridViewmenu.setAdapter(adapter);
-        Intent intent = getIntent();
-        OrderArrayList = intent.getParcelableArrayListExtra("order");
-        String Tong = intent.getStringExtra("Tong");
-        TextView test = (TextView) findViewById(R.id.tonggiohang);
-        test.setText(Tong);
-        gridViewmenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               Dialogmenu(position);
-            }
-        });
-
         Btngiohang = (ImageView) findViewById(R.id.listorder) ;
         Btngiohang.setOnClickListener(new View.OnClickListener() {
             @Override

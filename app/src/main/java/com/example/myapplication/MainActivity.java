@@ -94,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, web.class);
                 intent.putExtra("link", String.valueOf(link.getLink()));
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }
         });

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
     <!--
@@ -39,7 +40,8 @@
         <activity android:name=".listOrder"></activity>
         <activity android:name=".ThayDoiThongtin" />
         <activity android:name=".Lichsuchitiet" />
-        <activity android:name=".ThayDoiThongtin" />
+        <activity android:name=".ThayDoiThongtin"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".Bill_n_pay" />
         <activity android:name=".LienHe" />
         <activity android:name=".ListVoucher" />
@@ -53,6 +55,7 @@
         <activity android:name=".TichDiem_Activity" />
         <activity android:name=".account_Activity" />
         <activity android:name=".Bill_n_voucher" />
+        <activity android:name=".web"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
