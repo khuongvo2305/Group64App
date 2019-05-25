@@ -22,6 +22,7 @@ public class viewOrderAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        if (ViewOrderList == null) return 0;
         return ViewOrderList.size();
     }
 

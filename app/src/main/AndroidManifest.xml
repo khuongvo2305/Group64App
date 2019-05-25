@@ -55,6 +55,9 @@
         <activity android:name=".TichDiem_Activity" />
         <activity android:name=".account_Activity" />
         <activity android:name=".Bill_n_voucher" />
+        <activity android:name=".Bill_n_pay_list"/>
+        <activity android:name=".Bill_n_Voucher_list"/>
+        <activity android:name=".ListVoucher_list"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

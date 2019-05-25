@@ -69,7 +69,11 @@ public class listOrder extends AppCompatActivity {
         xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(listOrder.this, Bill_n_Voucher_list.class);
+                intent.putExtra("Tong",String.valueOf(Tong));
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
             }
         });
         thaydoi = (Button) findViewById(R.id.thaydoiOrder);
