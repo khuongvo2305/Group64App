@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(intent);
             }
         });
-        BtnLienhe = (ImageButton) findViewById(R.id.imageButton9) ;
+        BtnLienhe = (ImageButton) findViewById(R.id.btnCall) ;
         BtnLienhe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

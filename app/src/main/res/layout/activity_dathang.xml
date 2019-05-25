@@ -11,15 +11,18 @@
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="MENU"
         android:textColor="#006241"
         android:textSize="30dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
 
     <Button
         android:id="@+id/button6"
@@ -60,7 +63,7 @@
         app:srcCompat="@drawable/ngoisao_home" />
 
     <ImageButton
-        android:id="@+id/imageButton9"
+        android:id="@+id/btnCall"
         android:layout_width="57dp"
         android:layout_height="74dp"
         android:layout_marginStart="348dp"
@@ -87,16 +90,14 @@
         android:id="@+id/textView5"
         android:layout_width="457dp"
         android:layout_height="30dp"
-        android:layout_marginTop="80dp"
         android:text="_____________________________________________________________"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="514dp"
         android:layout_height="91dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/nen" />
@@ -172,13 +173,13 @@
     <GridView
         android:id="@+id/viewmenu"
         android:layout_width="406dp"
-        android:layout_height="372dp"
-        android:layout_marginTop="140dp"
+        android:layout_height="339dp"
+        android:layout_marginTop="8dp"
         android:horizontalSpacing="10dp"
         android:numColumns="2"
         android:verticalSpacing="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
     <TextView
         android:id="@+id/textView25"
@@ -194,37 +195,42 @@
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginBottom="10dp"
         android:text="Tổng:"
         android:textColor="#006241"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tonggiohang"
         android:layout_width="218dp"
         android:layout_height="33dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
         android:text="0"
-        android:textColor="#F9F400"
-        android:textSize="27dp"
+        android:textColor="#41A539"
+        android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView36"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/listorder"
+        app:layout_constraintStart_toEndOf="@+id/textView36" />
 
     <ImageView
         android:id="@+id/listorder"
-        android:layout_width="52dp"
-        android:layout_height="34dp"
+        android:layout_width="63dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="10dp"
         android:background="@null"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25"
         app:srcCompat="@drawable/thanhtoan" />
 
 </android.support.constraint.ConstraintLayout>
