@@ -80,13 +80,17 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int temp1 = Integer.parseInt(thanhtien.getText().toString());
-                int temp2 = Integer.parseInt(txttongtien.getText().toString());
+                int temp2;
+                if (txttongtien.getText().toString().equals("")) temp2 = 0;
+                else
+                temp2 = Integer.parseInt(txttongtien.getText().toString());
                 txttongtien.setText(String.valueOf(temp1+temp2));
                 String ten = arrayMenu.get(position).getTen().toString();
                 String giatien = arrayMenu.get(position).getMota();
                 String soluong =tempt;
                 String tongtien = String.valueOf(temp1);
                 ViewOrder test123 = new ViewOrder(ten, giatien, soluong,tongtien);
+                if (OrderArrayList !=null)
                 OrderArrayList.add(test123);
                 dialog.cancel();
             }
