@@ -89,7 +89,7 @@ public class BillQRActivity extends AppCompatActivity {
         String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
         //EditText edtSoTien = (EditText) findViewById(R.id.edtSoTien);
         //Button btntaobill = (Button) findViewById(R.id.btntaobill);
-        String billAmount = getIntent().getStringExtra("SoTien");
+        String billAmount = getIntent().getStringExtra("Tong");
         final String IDrandom = RandomString.getAlphaNumericString(8);
         final String ID = IDrandom;
         //String billAmount = edtSoTien.getText().toString();

@@ -52,9 +52,9 @@ public class CashierNewBillActivity extends AppCompatActivity {
         btntaobill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CashierNewBillActivity.this, BillQRActivity.class);
-                String SoTien = edtSoTien.getText().toString();
-                intent.putExtra("SoTien", SoTien);
+                Intent intent = new Intent(CashierNewBillActivity.this, DatHang_Activity.class);
+                //String SoTien = edtSoTien.getText().toString();
+                //intent.putExtra("SoTien", SoTien);
                 startActivity(intent);
             }
         });

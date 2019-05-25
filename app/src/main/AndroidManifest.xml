@@ -19,10 +19,9 @@
         <activity android:name=".BillQRActivity" />
         <activity android:name=".CashierLastBillActivity" />
         <activity android:name=".ListVoucher"/>
-        <activity android:name=".CashierLastBillActivity2" />
-
+        <activity android:name=".DatHang_Activity"/>
+        <activity android:name=".listOrder"/>
         <activity android:name=".CashierNewBillActivity" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -30,7 +29,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
