@@ -172,30 +172,31 @@
 
     <GridView
         android:id="@+id/viewmenu"
-        android:layout_width="406dp"
-        android:layout_height="339dp"
+        android:layout_width="409dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:horizontalSpacing="10dp"
         android:numColumns="2"
         android:verticalSpacing="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/tonggiohang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="475dp"
-        android:layout_height="29dp"
+        android:layout_height="0dp"
         android:text="______________________________________________________________"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewmenu" />
+        app:layout_constraintBottom_toTopOf="@+id/textView36"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView36"
         android:layout_width="79dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="10dp"
         android:text="Tổng:"
         android:textColor="#006241"
         android:textSize="30sp"
@@ -206,15 +207,14 @@
     <TextView
         android:id="@+id/tonggiohang"
         android:layout_width="218dp"
-        android:layout_height="33dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
         android:text="0"
         android:textColor="#41A539"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/listorder"
@@ -226,7 +226,6 @@
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="10dp"
         android:background="@null"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
