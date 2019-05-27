@@ -1,12 +1,9 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,18 +13,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class DatHang_Activity extends AppCompatActivity {
-    ImageButton cong, tru;
-    Button xacnhanDialog, huydialog,BtnName,rank;
+    ImageButton BtnAccount, BtnHome, BtnMap, BtnStore, cong, tru;
+    Button xacnhanDialog, huydialog;
     ImageView hinhsp,Btngiohang;
     TextView tensp, editsoluongsp, thanhtien, txttongtien;
     GridView gridViewmenu;
@@ -36,8 +26,6 @@ public class DatHang_Activity extends AppCompatActivity {
     ArrayList<Menu> arrayMenu;
     ArrayList<ViewOrder> OrderArrayList;
     MenuAdapter adapter;
-    String fbName,IDUser;
-
     public void Dialogmenu(final int position){
         final Dialog dialog = new Dialog(DatHang_Activity.this);
         dialog.setContentView(R.layout.dialog_menu);
@@ -83,18 +71,13 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int temp1 = Integer.parseInt(thanhtien.getText().toString());
-                int temp2;
-                if (txttongtien.getText().toString().equals("")) temp2 = 0;
-                else {
-                    temp2 = Integer.parseInt(txttongtien.getText().toString());
-                }
+                int temp2 = Integer.parseInt(txttongtien.getText().toString());
                 txttongtien.setText(String.valueOf(temp1+temp2));
-                String ten = arrayMenu.get(position).getTen();
+                String ten = arrayMenu.get(position).getTen().toString();
                 String giatien = arrayMenu.get(position).getMota();
                 String soluong =tempt;
                 String tongtien = String.valueOf(temp1);
                 ViewOrder test123 = new ViewOrder(ten, giatien, soluong,tongtien);
-                if (OrderArrayList !=null)
                 OrderArrayList.add(test123);
                 dialog.cancel();
             }
@@ -136,17 +119,31 @@ public class DatHang_Activity extends AppCompatActivity {
                 Dialogmenu(position);
             }
         });
+
         Btngiohang = (ImageView) findViewById(R.id.listorder) ;
         Btngiohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), listOrder.class)
-                        .putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList)
-                        .putExtra("fbName",fbName)
-                        .putExtra("IDUser",IDUser));
-
+                        .putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList));
+            }
+        });
+        BtnHome = (ImageButton) findViewById(R.id.imageButton18) ;
+        BtnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DatHang_Activity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
+        BtnStore = (ImageButton) findViewById(R.id.imageButton17) ;
+        BtnStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

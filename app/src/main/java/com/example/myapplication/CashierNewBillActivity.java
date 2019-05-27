@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -36,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class CashierNewBillActivity extends AppCompatActivity {
@@ -52,9 +54,10 @@ public class CashierNewBillActivity extends AppCompatActivity {
         btntaobill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList<ViewOrder> OrderArrayList = new ArrayList<>();
                 Intent intent = new Intent(CashierNewBillActivity.this, DatHang_Activity.class);
-                //String SoTien = edtSoTien.getText().toString();
-                //intent.putExtra("SoTien", SoTien);
+                intent.putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList);
+                intent.putExtra("Tong", "0");
                 startActivity(intent);
             }
         });

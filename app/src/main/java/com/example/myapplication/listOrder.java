@@ -62,7 +62,7 @@ public class listOrder extends AppCompatActivity {
         xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(listOrder.this, CashierLastBillActivity2.class);
+                Intent intent = new Intent(listOrder.this, BillQRActivity.class);
                 intent.putExtra("Tong",String.valueOf(Tong));
                 startActivity(intent);
             }
