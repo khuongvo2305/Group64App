@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud"
+    android:background="@drawable/background"
     tools:context=".listOrder">
 
     <TextView
@@ -171,9 +171,14 @@
     <GridView
         android:id="@+id/viewOrder"
         android:layout_width="405dp"
-        android:layout_height="309dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:verticalSpacing="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/tonggiohang"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
@@ -183,10 +188,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginBottom="16dp"
         android:text="Thay đổi"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewOrder" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/xacnhan"
@@ -194,38 +199,38 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginLeft="112dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginBottom="16dp"
         android:text="Xác nhận"
-        app:layout_constraintStart_toEndOf="@+id/thaydoiOrder"
-        app:layout_constraintTop_toBottomOf="@+id/viewOrder" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/thaydoiOrder" />
 
     <TextView
         android:id="@+id/textView36"
-        android:layout_width="86dp"
+        android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="476dp"
+        android:layout_marginBottom="8dp"
         android:text="Tổng:"
         android:textColor="#006241"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/thaydoiOrder"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tonggiohang"
-        android:layout_width="211dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="481dp"
+        android:layout_marginBottom="8dp"
         android:text="0"
         android:textColor="#39AA2D"
-        android:textSize="27dp"
+        android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView36"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/thaydoiOrder"
+        app:layout_constraintStart_toEndOf="@+id/textView36" />
 
 
 </android.support.constraint.ConstraintLayout>
