@@ -124,14 +124,7 @@ public class ListVoucher extends AppCompatActivity {
         });
 
 
-        BtnHome = (ImageButton) findViewById(R.id.BtnHome) ;
-        BtnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ListVoucher.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 }

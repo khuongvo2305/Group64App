@@ -128,22 +128,6 @@ public class DatHang_Activity extends AppCompatActivity {
                         .putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList));
             }
         });
-        BtnHome = (ImageButton) findViewById(R.id.imageButton18) ;
-        BtnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DatHang_Activity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        BtnStore = (ImageButton) findViewById(R.id.imageButton17) ;
-        BtnStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
