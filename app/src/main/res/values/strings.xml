@@ -12,11 +12,11 @@
     <string name="facebook_app_id">346580389301968</string>
     <string name="fb_login_protocol_scheme">fb346580389301968</string>
 
-    <string name="ngayinbill">23/05/1999</string>
-    <string name="mabill">Mt1702</string>
-    <string name="tongtienbill">180000</string>
-    <string name="mavoucher">8400</string>
-    <string name="tienvoucher">50000</string>
-    <string name="thanhtoan">130000</string>
+    <string name="ngayinbill"></string>
+    <string name="mabill"></string>
+    <string name="tongtienbill"></string>
+    <string name="mavoucher"></string>
+    <string name="tienvoucher"></string>
+    <string name="thanhtoan"></string>
 
 </resources>

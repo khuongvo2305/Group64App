@@ -39,7 +39,7 @@ public class ListVoucher extends AppCompatActivity {
     private  ListView listView;
     private  ArrayList<String> arraybillid = new ArrayList<>();
     private  ArrayList<String> arrayListID = new ArrayList<>();
-    private  ArrayList<String> arrayValue = new ArrayList<>();
+    private  ArrayList<String> arrayDisplay = new ArrayList<>();
     private  ArrayList<String> arrayPercen = new ArrayList<>();
     private  ArrayAdapter<String> adapter1;
     private  String key;
@@ -56,7 +56,7 @@ public class ListVoucher extends AppCompatActivity {
 //        final String BillId = intent.getStringExtra("IDBill");
 //        final String date = intent.getStringExtra("date");
 //        final String BillAmount = intent.getStringExtra("billAmount");
-        adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arraybillid);
+        adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayDisplay);
         mdata= FirebaseDatabase.getInstance().getReference();
         listView = (ListView) findViewById(R.id.ListView_ID);
         listView.setAdapter(adapter1);
@@ -71,6 +71,18 @@ public class ListVoucher extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String detail = dataSnapshot.getValue().toString();
                         arraybillid.add(detail);
+                        //adapter1.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+                mdata.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String customerid = dataSnapshot.child("customerOrder").child(string).child("unpaidbill").child("customerid").getValue().toString();
+                        String billid = dataSnapshot.child("customerOrder").child(string).child("unpaidbill").child("billid").getValue().toString();
+                        arrayDisplay.add(dataSnapshot.child("customer").child(customerid).child("name").getValue().toString() + " - " + billid);
                         adapter1.notifyDataSetChanged();
                     }
                     @Override
