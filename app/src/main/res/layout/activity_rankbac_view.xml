@@ -7,6 +7,20 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:text="BẠN ĐANG CÓ:"
+        android:textColor="#006241"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="18dp"
@@ -71,15 +85,15 @@
 
     <ImageButton
         android:id="@+id/imageButton5"
-        android:layout_width="28dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="3dp"
         android:background="@null"
         android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="@+id/point"
+        app:layout_constraintStart_toEndOf="@+id/point"
         app:srcCompat="@drawable/ngoisao_home" />
 
     <ImageButton
@@ -114,6 +128,15 @@
         android:text="_____________________________________________________________"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="457dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:text="_____________________________________________________________"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail2" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -193,31 +216,17 @@
 
     <TextView
         android:id="@+id/point"
-        android:layout_width="38dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="24dp"
-        android:text=""
-        android:textColor="#006241"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
-
-    <TextView
-        android:id="@+id/rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:text=""
         android:textColor="#006241"
-        android:textSize="15sp"
+        android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintStart_toEndOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/detail"
@@ -225,16 +234,33 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text=" Ưu đãi dành cho thành viên kim cương: \n - Tặng voucher giảm giá 200k khi lên hạng. \n - Tặng voucher  giảm 40% mỗi khi tích đủ 50 điểm. \n - Ưu tiên trải nghiệm những tính năng mới. \n - Nhiều sự kiện khuyến mãi đặc biết. "
+        android:text="Quyền lợi của thành viên Vàng:\n- Giảm ngay 200.000 - Quà tặng lên hạng thành viên KIM CƯƠNG\n- Giảm ngay 30% - Quà tặng 50 điểm hạng VÀNG\n- Nhiều sự kiện khuyến mãi đặc biêt. "        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pointToNextLV" />
+
+    <TextView
+        android:id="@+id/detail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Bạn đang là thành viên Bạc. \n Ưu đãi dành cho bạn:\n- Giảm ngay 100.000 - Quà tặng lên hạng thành viên VÀNG.\n- Giảm ngay 20% - Quà tặng 50 điểm hạng BẠC."
         android:textColor="#FFFFFF"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/pointToNextLV"
@@ -242,15 +268,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="17sp"
+        android:textColor="#2E572B"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 </android.support.constraint.ConstraintLayout>

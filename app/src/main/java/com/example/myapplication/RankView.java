@@ -81,8 +81,8 @@ public class RankView extends AppCompatActivity {
                 point = (TextView) findViewById(R.id.point);
                 rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
                 point.setText(dataSnapshot.child("point").getValue().toString());
-                rankview = (TextView) findViewById(R.id.rank);
-                rankview.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString());
+                //rankview = (TextView) findViewById(R.id.rank);
+                //rankview.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString());
                 BtnName = (Button) findViewById(R.id.button6) ;
                 BtnName.setText(fbName);
                 BtnAccount = (ImageButton) findViewById(R.id.imageButton19);
