@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -9,15 +10,18 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class Bill_n_Voucher_list extends AppCompatActivity {
-    private Button useVoucherBtn, xacnhanBtn;
+    private Button useVoucherBtn, xacnhanBtn,rank;
     private DatabaseReference mdata;
     private TextView scanResults;
     private TextView scanResults_ID;
@@ -51,7 +55,6 @@ public class Bill_n_Voucher_list extends AppCompatActivity {
             return sb.toString();
         }
     }
-
     String fbName, QRCode,IDUser;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     Button BtnName;
@@ -65,10 +68,27 @@ public class Bill_n_Voucher_list extends AppCompatActivity {
         scanResults_BillAmount = (TextView) findViewById(R.id.txtTongbill);
         BtnName = (Button) findViewById(R.id.button6) ;
 
+        if (getIntent().getStringExtra("IDUser") != null)
+        {
+            IDUser = getIntent().getStringExtra("IDUser");
+        }
+        BtnName = (Button) findViewById(R.id.button6) ;
         if (getIntent().getStringExtra("fbName") != null) {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
         }
+        mdata = FirebaseDatabase.getInstance().getReference();
+        mdata.child("customer").child(IDUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                rank = (Button) findViewById(R.id.button7);
+                rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         TextView txtTongbill5 = (TextView) findViewById(R.id.txtTongbill5);
