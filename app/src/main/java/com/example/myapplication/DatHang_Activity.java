@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -207,7 +208,7 @@ public class DatHang_Activity extends AppCompatActivity {
         BtnName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
+                Intent intent = new Intent(DatHang_Activity.this, RankView.class);
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
@@ -217,7 +218,7 @@ public class DatHang_Activity extends AppCompatActivity {
         BtnRank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
+                Intent intent = new Intent(DatHang_Activity.this, RankView.class);
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);

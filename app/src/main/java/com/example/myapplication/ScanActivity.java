@@ -52,7 +52,8 @@ public class ScanActivity extends AppCompatActivity {
     ImageButton BtnAccount, BtnHome, BtnOrder, BtnMap;
     Button BtnName,rank;
     String IDUser, fbName;
-
+    ImageButton BtnAvartar,BtnIconStar;
+    Button BtnRank,BtnPoint;
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.scan);
@@ -126,6 +127,56 @@ public class ScanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, Map_Activity.class);
                 intent.putExtra("fbName", fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnAvartar = (ImageButton) findViewById(R.id.imageButton11) ;
+        BtnAvartar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, RankView.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnIconStar = (ImageButton) findViewById(R.id.imageButton5) ;
+        BtnIconStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, RankView.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnName = (Button) findViewById(R.id.button6) ;
+        BtnName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, RankView.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnRank = (Button) findViewById(R.id.button7) ;
+        BtnRank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, RankView.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnPoint = (Button) findViewById(R.id.button8) ;
+        BtnPoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, RankView.class);
+                intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
             }

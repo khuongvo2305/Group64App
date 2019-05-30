@@ -16,6 +16,8 @@ public class Bill_n_pay_list extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
     String fbName,IDUser;
+    ImageButton BtnIconStar;
+    Button BtnRank,BtnPoint;
     private DatabaseReference mdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

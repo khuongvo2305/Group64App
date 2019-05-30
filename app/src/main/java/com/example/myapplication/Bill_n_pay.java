@@ -19,6 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 public class Bill_n_pay extends AppCompatActivity {
     private Button useVoucherBtn, xacnhanBtn,rank,BtnName;
     ImageButton BtnHome, BtnOrder,BtnMap,BtnStore,BtnAccount;
+    ImageButton BtnAvartar,BtnIconStar;
+    Button BtnRank,BtnPoint;
     String fbName,IDUser;
     private DatabaseReference mdata;
     @Override
@@ -152,6 +154,55 @@ public class Bill_n_pay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bill_n_pay.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnAvartar = (ImageButton) findViewById(R.id.imageButton11) ;
+        BtnAvartar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Bill_n_pay.this, RankView.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnIconStar = (ImageButton) findViewById(R.id.imageButton5) ;
+        BtnIconStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Bill_n_pay.this, RankView.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Bill_n_pay.this, RankView.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnRank = (Button) findViewById(R.id.button7) ;
+        BtnRank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Bill_n_pay.this, RankView.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnPoint = (Button) findViewById(R.id.button8) ;
+        BtnPoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Bill_n_pay.this, RankView.class);
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);

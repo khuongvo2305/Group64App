@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         BtnAvartar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                Intent intent = new Intent(MainActivity.this, RankView.class);
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         BtnIconStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                Intent intent = new Intent(MainActivity.this, RankView.class);
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         BtnName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                Intent intent = new Intent(MainActivity.this, RankView.class);
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         BtnRank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                Intent intent = new Intent(MainActivity.this, RankView.class);
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         BtnPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                Intent intent = new Intent(MainActivity.this, RankView.class);
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
