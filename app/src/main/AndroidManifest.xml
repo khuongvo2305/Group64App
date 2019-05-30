@@ -22,6 +22,8 @@
         <activity android:name=".DatHang_Activity"/>
         <activity android:name=".listOrder"/>
         <activity android:name=".CashierNewBillActivity" />
+        <activity android:name=".CashierLastBillActivity2"/>
+        <activity android:name=".CashierLastBillActivity3"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

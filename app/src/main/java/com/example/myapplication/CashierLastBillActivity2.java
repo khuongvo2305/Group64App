@@ -46,7 +46,7 @@ public class CashierLastBillActivity2 extends AppCompatActivity {
         setContentView(R.layout.cashier_finalbill);
         //Firebase
         mData = FirebaseDatabase.getInstance().getReference();
-        mData.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").addValueEventListener(new ValueEventListener() {
+        mData.addValueEventListener(new ValueEventListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -54,15 +54,15 @@ public class CashierLastBillActivity2 extends AppCompatActivity {
 
                 if (dataSnapshot.exists()) {
                     //Chack trạng thái thanh toán
-                    upbstate = Objects.requireNonNull(dataSnapshot.child("unpaidbill").child("state").getValue()).toString();
+                    upbstate = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("state").getValue()).toString();
 
-                    upbcustomerid = Objects.requireNonNull(dataSnapshot.child("unpaidbill").child("customerid").getValue()).toString();
-                    upbtotal = Objects.requireNonNull(dataSnapshot.child("unpaidbill").child("billtotal").getValue()).toString();
-                    upbamount = Objects.requireNonNull(dataSnapshot.child("unpaidbill").child("billamount").getValue()).toString();
-                    upbid = Objects.requireNonNull(dataSnapshot.child("unpaidbill").child("billid").getValue()).toString();
-                    upbdate = dataSnapshot.child("unpaidbill").child("date").toString();
-                    upbpoint = Objects.requireNonNull(dataSnapshot.child("unpaidbill").child("point").getValue()).toString();
-                    upbvoucherid = Objects.requireNonNull(dataSnapshot.child("unpaidbill").child("voucherid").getValue()).toString();
+                    upbcustomerid = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("customerid").getValue()).toString();
+                    upbtotal = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("billtotal").getValue()).toString();
+                    upbamount = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("billamount").getValue()).toString();
+                    upbid = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("billid").getValue()).toString();
+                    upbdate = dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("date").toString();
+                    upbpoint = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("point").getValue()).toString();
+                    upbvoucherid = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("voucherid").getValue()).toString();
                     if(dataSnapshot.child("customer").child(upbcustomerid).child("point").exists()) {
                         oldpoint = Integer.parseInt(Objects.requireNonNull(dataSnapshot.child("customer").child(upbcustomerid).child("point").getValue()).toString());
                     }                    name = Objects.requireNonNull(dataSnapshot.child("customer").child(upbcustomerid).child("name").getValue()).toString();
