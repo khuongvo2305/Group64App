@@ -48,7 +48,7 @@ public class CashierNewBillActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cashier_newbill);
-        final EditText edtSoTien = (EditText) findViewById(R.id.edtSoTien);
+        //final EditText edtSoTien = (EditText) findViewById(R.id.edtSoTien);
         Button btntaobill = (Button) findViewById(R.id.btntaobill);
         Button btnthanhtoan = (Button) findViewById(R.id.btnthanhtoanbill);
         btntaobill.setOnClickListener(new View.OnClickListener() {

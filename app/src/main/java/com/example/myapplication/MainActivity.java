@@ -28,40 +28,44 @@ public class MainActivity extends AppCompatActivity {
     private String json;
     DatabaseReference mData;
     ImageButton BtnMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String idUser = getIntent().getStringExtra("idUser");
         String ID = getIntent().getStringExtra("idBill");
-        int billAmount = getIntent().getIntExtra("billAmount",0);
+        int billAmount = getIntent().getIntExtra("billAmount", 0);
         String dateString = getIntent().getStringExtra("dateBill");
 
-        BtnMap = (ImageButton) findViewById(R.id.imageButton20) ;
-        BtnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CashierNewBillActivity.class);
-                startActivity(intent);
-            }
-        });
+//        BtnMap = (ImageButton) findViewById(R.id.imageButton20) ;
+//        BtnMap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, CashierNewBillActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        class Voucher
-        {
+        class Voucher {
             public String detail;
             public int value;
             public int percentage;
             public boolean available;
-            public Voucher(){};
+
+            public Voucher() {
+            }
+
+            ;
+
             public Voucher(String detail, int value) {
                 available = true;
                 this.detail = detail;
             }
         }
 
-        class Bill
-        {
+        class Bill {
             public String ID;
             public String dateString;
             public int billAmount;
@@ -95,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             public User() {
                 // Default constructor required for calls to DataSnapshot.getValue(User.class)
             }
+
             public User(String ID, String name, String phone, String address) {
                 this.ID = ID;
                 this.name = name;
@@ -104,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 this.point = 0;
             }
         }
-        mData = FirebaseDatabase.getInstance().getReference();
+        Intent intent = new Intent(MainActivity.this, CashierNewBillActivity.class);
+        startActivity(intent);
     }
 }
