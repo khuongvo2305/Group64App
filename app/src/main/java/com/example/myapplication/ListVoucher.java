@@ -40,6 +40,7 @@ public class ListVoucher extends AppCompatActivity {
     private  ArrayList<String> arraybillid = new ArrayList<>();
     private  ArrayList<String> arrayListID = new ArrayList<>();
     private  ArrayList<String> arrayDisplay = new ArrayList<>();
+    private  ArrayList<String> arrayListHashKey = new ArrayList<>();
     private  ArrayList<String> arrayPercen = new ArrayList<>();
     private  ArrayAdapter<String> adapter1;
     private  String key;
@@ -64,19 +65,7 @@ public class ListVoucher extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 final String string =  dataSnapshot.getKey().toString();
-                key = string;
-                arrayListID.add(string);
-                mdata.child("customerOrder").child(string).child("unpaidbill").child("billid").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String detail = dataSnapshot.getValue().toString();
-                        arraybillid.add(detail);
-                        //adapter1.notifyDataSetChanged();
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
+                arrayListHashKey.add(string);
                 mdata.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -84,6 +73,16 @@ public class ListVoucher extends AppCompatActivity {
                         String billid = dataSnapshot.child("customerOrder").child(string).child("unpaidbill").child("billid").getValue().toString();
                         arrayDisplay.add(dataSnapshot.child("customer").child(customerid).child("name").getValue().toString() + " - " + billid);
                         adapter1.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+                mdata.child("customerOrder").child(string).child("unpaidbill").child("billid").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String detail = dataSnapshot.getValue().toString();
+                        arraybillid.add(detail);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -130,7 +129,7 @@ public class ListVoucher extends AppCompatActivity {
                 Intent intent = new Intent(ListVoucher.this, CashierLastBillActivity3.class);
                 intent.putExtra("customerID", arrayListID.get(position));
                 intent.putExtra("billID", arraybillid.get(position));
-                intent.putExtra("billKey", key);
+                intent.putExtra("billKey", arrayListHashKey.get(position));
                 startActivity(intent);
             }
         });

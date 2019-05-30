@@ -62,7 +62,7 @@ public class CashierLastBillActivity3 extends AppCompatActivity {
                     upbdate = dataSnapshot.child("unpaidbill").child("customerOrder").child(getIntent().getStringExtra("billKey")).child("date").toString();
                     upbpoint = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("point").getValue()).toString();
                     upbvoucherid = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("voucherid").getValue()).toString();
-                    upbamount = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("billamout").getValue()).toString();
+                    upbamount = Objects.requireNonNull(dataSnapshot.child("customerOrder").child(getIntent().getStringExtra("billKey")).child("unpaidbill").child("billamount").getValue()).toString();
 
                     if(dataSnapshot.child("customer").child(upbcustomerid).child("point").exists()) {
                         oldpoint = Integer.parseInt(Objects.requireNonNull(dataSnapshot.child("customer").child(upbcustomerid).child("point").getValue()).toString());
