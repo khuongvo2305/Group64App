@@ -44,6 +44,16 @@ public class listOrder extends AppCompatActivity {
             fbName = getIntent().getStringExtra("fbName");
             BtnName.setText(fbName);
         }
+        BtnName = (Button) findViewById(R.id.button6) ;
+        BtnName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listOrder.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
         if (getIntent().getStringExtra("IDUser") != null)
         {
             IDUser = getIntent().getStringExtra("IDUser");

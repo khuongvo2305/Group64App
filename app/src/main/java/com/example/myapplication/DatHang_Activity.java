@@ -23,8 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class DatHang_Activity extends AppCompatActivity {
-    ImageButton BtnAccount, BtnHome, BtnMap, BtnStore, cong, tru;
-    Button xacnhanDialog, huydialog,BtnName,rank;
+    ImageButton BtnAccount, BtnHome, BtnMap, BtnStore, cong, tru,BtnIconStar, BtnAvartar;
+    Button xacnhanDialog, huydialog,BtnName,rank,BtnRank,BtnPoint;
     ImageView hinhsp,Btngiohang;
     TextView tensp, editsoluongsp, thanhtien, txttongtien;
     GridView gridViewmenu;
@@ -195,6 +195,26 @@ public class DatHang_Activity extends AppCompatActivity {
         });
         BtnStore = (ImageButton) findViewById(R.id.imageButton17) ;
         BtnStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnName = (Button) findViewById(R.id.button6) ;
+        BtnName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);
+                intent.putExtra("fbName",fbName);
+                intent.putExtra("IDUser", IDUser);
+                startActivity(intent);
+            }
+        });
+        BtnRank = (Button) findViewById(R.id.button7) ;
+        BtnRank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DatHang_Activity.this, ScanActivity.class);

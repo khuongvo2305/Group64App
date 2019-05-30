@@ -26,7 +26,8 @@ public class Lichsuchitiet extends AppCompatActivity {
         TextView BillId = (TextView) findViewById(R.id.txtMabill);
         BillId.setText(billid);
         TextView BillDate = (TextView) findViewById(R.id.txtNgayinbill);
-        BillDate.setText(billdate);
+        String billdate2 = billdate.split("\\=")[2].split("\\}")[0];
+        BillDate.setText(billdate2);
         TextView Billamount = (TextView) findViewById(R.id.txtTongbill);
         Billamount.setText(billamount);
         TextView BillTotal = (TextView) findViewById(R.id.txtTongbill2);

@@ -55,14 +55,16 @@ public class LichSuGiaoDich extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 final String string =  dataSnapshot.getKey().toString();
+                String date = dataSnapshot.child("date").getValue().toString().split("\\=")[2].split("\\}")[0];
                 Collections.reverse(arrayListIDhistory);
-                arrayListIDhistory.add(string);
+                arrayListIDhistory.add(string + " - " + date);
                 Collections.reverse(arrayListIDhistory);
                 adapter1.notifyDataSetChanged();
-                mdata.child("customer").child(ID).child("history").child(string).child("billid").addValueEventListener(new ValueEventListener() {
+                mdata.child("customer").child(ID).child("history").child(string).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String billid = dataSnapshot.getValue().toString();
+                        String billid = dataSnapshot.child("billid").getValue().toString();
+
                         Collections.reverse(arrayListIDhistory);
                         arraybillid.add(billid);
                         Collections.reverse(arrayListIDhistory);
