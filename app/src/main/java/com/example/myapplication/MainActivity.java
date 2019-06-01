@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 rank = (Button) findViewById(R.id.button7);
+                if(dataSnapshot.exists())
                 rank.setText("Thành viên "+dataSnapshot.child("rank").getValue().toString()+"-"+ dataSnapshot.child("point").getValue().toString());
             }
             @Override
@@ -176,8 +177,8 @@ public class MainActivity extends AppCompatActivity {
         BtnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<ViewOrder> OrderArrayList = new ArrayList<>();
                 Intent intent = new Intent(MainActivity.this, DatHang_Activity.class);
+                ArrayList<ViewOrder> OrderArrayList = new ArrayList<>();
                 intent.putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList);
                 intent.putExtra("Tong", "0");
                 intent.putExtra("fbName",fbName);

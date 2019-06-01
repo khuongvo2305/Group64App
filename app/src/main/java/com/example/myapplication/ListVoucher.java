@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -169,6 +170,9 @@ public class ListVoucher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListVoucher.this, DatHang_Activity.class);
+                ArrayList<ViewOrder> OrderArrayList = new ArrayList<>();
+                intent.putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList);
+                intent.putExtra("Tong", "0");
                 intent.putExtra("fbName",fbName);
                 startActivity(intent);
             }

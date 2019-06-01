@@ -2,24 +2,20 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
-import android.support.v4.app.FragmentActivity;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+
+
+import java.util.ArrayList;
 
 
 public class Map_Activity extends AppCompatActivity {
     ImageButton BtnAccount, BtnHome, BtnOrder, BtnStore;
     String fbName,IDUser;
-    private GoogleMap mMap;
+
 
 
     @Override
@@ -48,6 +44,9 @@ public class Map_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Map_Activity.this, DatHang_Activity.class);
+                ArrayList<ViewOrder> OrderArrayList = new ArrayList<>();
+                intent.putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList);
+                intent.putExtra("Tong", "0");
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser",IDUser);
                 startActivity(intent);

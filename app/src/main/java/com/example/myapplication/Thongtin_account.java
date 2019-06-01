@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +15,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 public class Thongtin_account extends AppCompatActivity {
@@ -120,6 +123,9 @@ public class Thongtin_account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Thongtin_account.this, DatHang_Activity.class);
+                ArrayList<ViewOrder> OrderArrayList = new ArrayList<>();
+                intent.putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList);
+                intent.putExtra("Tong", "0");
                 intent.putExtra("fbName",fbName);
                 intent.putExtra("IDUser",IDUser);
                 startActivity(intent);

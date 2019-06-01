@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -36,6 +37,8 @@ import com.google.zxing.integration.android.IntentResult;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
 public class ScanActivity extends AppCompatActivity {
     private static final String LOG_TAG = "Barcode Scanner API";
     private static final int PHOTO_REQUEST = 10;
@@ -116,6 +119,9 @@ public class ScanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScanActivity.this, DatHang_Activity.class);
+                ArrayList<ViewOrder> OrderArrayList = new ArrayList<>();
+                intent.putParcelableArrayListExtra("order", (ArrayList<? extends Parcelable>) OrderArrayList);
+                intent.putExtra("Tong", "0");
                 intent.putExtra("fbName", fbName);
                 intent.putExtra("IDUser", IDUser);
                 startActivity(intent);
