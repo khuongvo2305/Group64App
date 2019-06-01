@@ -42,7 +42,7 @@ public class DatHang_Activity extends AppCompatActivity {
 
         hinhsp = (ImageView) dialog.findViewById(R.id.sanphamview);
         tensp = (TextView) dialog.findViewById(R.id.txttensp) ;
-        editsoluongsp = (TextView) dialog.findViewById(R.id.edittextsoluong) ;
+        editsoluongsp = (TextView) dialog.findViewById(R.id.testfinal) ;
         thanhtien = (TextView) dialog.findViewById(R.id.thanhtien);
         tensp.setText(arrayMenu.get(position).getTen());
         hinhsp.setImageResource(arrayMenu.get(position).getHinh());

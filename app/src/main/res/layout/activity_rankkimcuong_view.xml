@@ -251,7 +251,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="Rank của bạn: Kim Cương. \nƯu đãi dành cho thành viên : \n - Tặng voucher giảm giá 200k khi lên hạng. \n - Tặng voucher  giảm 40% mỗi khi tích đủ 50 điểm. \n - Ưu tiên trải nghiệm những tính năng mới. \n - Nhiều sự kiện khuyến mãi đặc biết. "
-        android:textColor="#FFFFFF"
+        android:textColor="#9D47AC"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -41,16 +41,20 @@ public class MainActivity extends AppCompatActivity {
     private void AnhXaLink() {
         arrayLink = new ArrayList<>();
 
-        arrayLink.add(0, new link("https://the64coffee.blogspot.com/2019/05/giai-nhiet-mua-he-cung-64-coffee-sale.html"));
-        arrayLink.add(1, new link("https://the64coffee.blogspot.com/2019/05/64-coffee-sale-10-cho-hoc-sinh-sinh-vien.html"));
+        arrayLink.add(0, new link("https://the64coffee.blogspot.com/2019/05/the-64-coffee-app.html"));
+        arrayLink.add(1, new link("https://the64coffee.blogspot.com/2019/05/giai-nhiet-mua-he-cung-64-coffee-sale.html"));
+        arrayLink.add(2, new link("https://the64coffee.blogspot.com/2019/05/64-coffee-sale-10-cho-hoc-sinh-sinh-vien.html"));
+        arrayLink.add(3, new link("https://the64coffee.blogspot.com/2019/05/thong-tin-tich-iem.html"));
     }
 
     private void AnhXa() {
         lvTintuc = (ListView) findViewById(R.id.listviewTintuc);
         arrayTinTuc = new ArrayList<>();
 
+        arrayTinTuc.add(new TinTuc("Giới thiệu app", R.drawable.hinh0));
         arrayTinTuc.add(new TinTuc("Giảm 30% mọi loại kem tại quán!", R.drawable.hinh1));
         arrayTinTuc.add(new TinTuc("Giảm 10% cho học sinh sinh viên!", R.drawable.hinh2));
+        arrayTinTuc.add(new TinTuc("Thông tin tích điểm", R.drawable.hinh3));
     }
 
 
