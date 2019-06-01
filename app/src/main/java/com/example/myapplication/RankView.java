@@ -47,25 +47,25 @@ public class RankView extends AppCompatActivity {
                    setContentView(R.layout.activity_ranknew_view);
                    point = 50 - pointInt;
                    pointToNextLV = (TextView) findViewById(R.id.pointToNextLV);
-                   pointToNextLV.setText("Còn " + point + " để lên Thành Viên Bạc");
+                   pointToNextLV.setText("Còn " + point + "đ để lên Thành Viên Bạc");
                }
                else if (pointInt <= 250) {
                    setContentView(R.layout.activity_rankbac_view);
                    point = 250 - pointInt;
                    pointToNextLV = (TextView) findViewById(R.id.pointToNextLV);
-                   pointToNextLV.setText("Còn " + point + " để lên Thành Viên Vàng");
+                   pointToNextLV.setText("Còn " + point + "đ để lên Thành Viên Vàng");
                }
                else if (pointInt <= 400) {
                    setContentView(R.layout.activity_rankvang_view);
                    point = 400 - pointInt;
                    pointToNextLV = (TextView) findViewById(R.id.pointToNextLV);
-                   pointToNextLV.setText("Còn " + point + " để lên Thành Viên Kim Cương");
+                   pointToNextLV.setText("Còn " + point + "đ để lên Thành Viên Kim Cương");
                }
                else {
                    setContentView(R.layout.activity_rankkimcuong_view);
                    point =50 - (pointInt % 50);
                    pointToNextLV = (TextView) findViewById(R.id.pointToNextLV);
-                   pointToNextLV.setText("Còn " + point + " để lên nhận ưu đãi tiếp theo");
+                   pointToNextLV.setText("Còn " + point + "đ để lên nhận ưu đãi tiếp theo");
                }
             }
             @Override
