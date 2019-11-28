@@ -59,4 +59,4 @@
 </div>
 </div>
 </h2>
-![Alt text](Poster 64.png)
+![alt text](Poster 64.png)
