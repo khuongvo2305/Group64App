@@ -59,4 +59,4 @@
 </div>
 </div>
 </h2>
-![alt text](Poster 64.png)
+![alt text](https://github.com/khuongvo2305/Group64App/blob/CustomerApp/Poster%2064.png?raw=true)
